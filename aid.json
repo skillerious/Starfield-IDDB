@@ -1,0 +1,273 @@
+[
+    {
+      "Item Code": "0029A851",
+      "Item Name": "Addichrone",
+      "Console Command": "player.additem 0029A851 1"
+    },
+    {
+      "Item Code": "001F3E85",
+      "Item Name": "AddiJack",
+      "Console Command": "player.additem 001F3E85 1"
+    },
+    {
+      "Item Code": "000C1F57",
+      "Item Name": "Alien Genetic Material",
+      "Console Command": "player.additem 000C1F57 1"
+    },
+    {
+      "Item Code": "0029A856",
+      "Item Name": "Amp",
+      "Console Command": "player.additem 0029A856 1"
+    },
+    {
+      "Item Code": "0003D3B2",
+      "Item Name": "Analgesic Poultice",
+      "Console Command": "player.additem 0003D3B2 1"
+    },
+    {
+      "Item Code": "0003D3AD",
+      "Item Name": "Anchored Immobilizers",
+      "Console Command": "player.additem 0003D3AD 1"
+    },
+    {
+      "Item Code": "0003D3A9",
+      "Item Name": "Antibiotic Cocktail",
+      "Console Command": "player.additem 0003D3A9 1"
+    },
+    {
+      "Item Code": "0003D3AF",
+      "Item Name": "Antibiotic Injector",
+      "Console Command": "player.additem 0003D3AF 1"
+    },
+    {
+      "Item Code": "299590",
+      "Item Name": "Antibiotic Paste",
+      "Console Command": "player.additem 299590 1"
+    },
+    {
+      "Item Code": "002F4436",
+      "Item Name": "Antibiotics",
+      "Console Command": "player.additem 002F4436 1"
+    },
+    {
+      "Item Code": "002C5884",
+      "Item Name": "Aurora",
+      "Console Command": "player.additem 002C5884 1"
+    },
+    {
+      "Item Code": "002F4459",
+      "Item Name": "Bandages",
+      "Console Command": "player.additem 002F4459 1"
+    },
+    {
+      "Item Code": "002A5024",
+      "Item Name": "Battlestim",
+      "Console Command": "player.additem 002A5024 1"
+    },
+    {
+      "Item Code": "001F3E87",
+      "Item Name": "BattleUp",
+      "Console Command": "player.additem 001F3E87 1"
+    },
+    {
+      "Item Code": "00122EA8",
+      "Item Name": "Black Hole Heart",
+      "Console Command": "player.additem 00122EA8 1"
+    },
+    {
+      "Item Code": "0003D3AC",
+      "Item Name": "Boosted Injector",
+      "Console Command": "player.additem 0003D3AC 1"
+    },
+    {
+      "Item Code": "0029959F",
+      "Item Name": "Boudicca",
+      "Console Command": "player.additem 0029959F 1"
+    },
+    {
+      "Item Code": "0029A85E",
+      "Item Name": "CQB-X",
+      "Console Command": "player.additem 0029A85E 1"
+    },
+    {
+      "Item Code": "122EB6",
+      "Item Name": "Dwarf Star Heart",
+      "Console Command": "player.additem 122EB6 1"
+    },
+    {
+      "Item Code": "002A9DE8",
+      "Item Name": "Emergency Kit",
+      "Console Command": "player.additem 002A9DE8 1"
+    },
+    {
+      "Item Code": "002C5885",
+      "Item Name": "Frostwolf",
+      "Console Command": "player.additem 002C5885 1"
+    },
+    {
+      "Item Code": "0029959A",
+      "Item Name": "Giant Heart",
+      "Console Command": "player.additem 0029959A 1"
+    },
+    {
+      "Item Code": "0003D3AB",
+      "Item Name": "Heal Gel",
+      "Console Command": "player.additem 0003D3AB 1"
+    },
+    {
+      "Item Code": "002F445C",
+      "Item Name": "Heal Paste",
+      "Console Command": "player.additem 002F445C 1"
+    },
+    {
+      "Item Code": "0029CAD9",
+      "Item Name": "Heart+",
+      "Console Command": "player.additem 0029CAD9 1"
+    },
+    {
+      "Item Code": "002C5883",
+      "Item Name": "Hippolyta",
+      "Console Command": "player.additem 002C5883 1"
+    },
+    {
+      "Item Code": "00122E9C",
+      "Item Name": "Hypergiant Heart",
+      "Console Command": "player.additem 00122E9C 1"
+    },
+    {
+      "Item Code": "002F445B",
+      "Item Name": "Immobilizer",
+      "Console Command": "player.additem 002F445B 1"
+    },
+    {
+      "Item Code": "0029A85C",
+      "Item Name": "Infantry Alpha",
+      "Console Command": "player.additem 0029A85C 1"
+    },
+    {
+      "Item Code": "0003D3B0",
+      "Item Name": "Infused Bandages",
+      "Console Command": "player.additem 0003D3B0 1"
+    },
+    {
+      "Item Code": "0003D3AB",
+      "Item Name": "Injector",
+      "Console Command": "player.additem 0003D3AB 1"
+    },
+    {
+      "Item Code": "00143CB1",
+      "Item Name": "Junk Flush",
+      "Console Command": "player.additem 00143CB1 1"
+    },
+    {
+      "Item Code": "ABF9",
+      "Item Name": "Med Pack",
+      "Console Command": "player.additem ABF9 1"
+    },
+    {
+      "Item Code": "002C5882",
+      "Item Name": "Neurajack",
+      "Console Command": "player.additem 002C5882 1"
+    },
+    {
+      "Item Code": "001F3E84",
+      "Item Name": "O2 Shot",
+      "Console Command": "player.additem 001F3E84 1"
+    },
+    {
+      "Item Code": "0029A859",
+      "Item Name": "Panacea",
+      "Console Command": "player.additem 0029A859 1"
+    },
+    {
+      "Item Code": "002A5025",
+      "Item Name": "Panopticon",
+      "Console Command": "player.additem 002A5025 1"
+    },
+    {
+      "Item Code": "002C5881",
+      "Item Name": "Paramour",
+      "Console Command": "player.additem 002C5881 1"
+    },
+    {
+      "Item Code": "0029A84F",
+      "Item Name": "Penicillin X",
+      "Console Command": "player.additem 0029A84F 1"
+    },
+    {
+      "Item Code": "00255DCB",
+      "Item Name": "Pick-Me-Up",
+      "Console Command": "player.additem 00255DCB 1"
+    },
+    {
+      "Item Code": "0029A855",
+      "Item Name": "Reconstim",
+      "Console Command": "player.additem 0029A855 1"
+    },
+    {
+      "Item Code": "002C587F",
+      "Item Name": "Red Trench",
+      "Console Command": "player.additem 002C587F 1"
+    },
+    {
+      "Item Code": "001F3E86",
+      "Item Name": "RedAMP",
+      "Console Command": "player.additem 001F3E86 1"
+    },
+    {
+      "Item Code": "00224D61",
+      "Item Name": "Repairing Immobilizer",
+      "Console Command": "player.additem 00224D61 1"
+    },
+    {
+      "Item Code": "00139E4B",
+      "Item Name": "S.T.E.V.E.",
+      "Console Command": "player.additem 00139E4B 1"
+    },
+    {
+      "Item Code": "0029A850",
+      "Item Name": "Snake Oil",
+      "Console Command": "player.additem 0029A850 1"
+    },
+    {
+      "Item Code": "002A9DE7",
+      "Item Name": "Squall",
+      "Console Command": "player.additem 002A9DE7 1"
+    },
+    {
+      "Item Code": "00122EB1",
+      "Item Name": "Subgiant Heart",
+      "Console Command": "player.additem 00122EB1 1"
+    },
+    {
+      "Item Code": "00122EAD",
+      "Item Name": "Supermassive Black Heart",
+      "Console Command": "player.additem 00122EAD 1"
+    },
+    {
+      "Item Code": "002C5880",
+      "Item Name": "Synapse Alpha",
+      "Console Command": "player.additem 002C5880 1"
+    },
+    {
+      "Item Code": "0029A847",
+      "Item Name": "Trauma Pack",
+      "Console Command": "player.additem 0029A847 1"
+    },
+    {
+      "Item Code": "000C8721",
+      "Item Name": "Unprocessed Aurora",
+      "Console Command": "player.additem 000C8721 1"
+    },
+    {
+      "Item Code": "00143CB2",
+      "Item Name": "Whiteout",
+      "Console Command": "player.additem 00143CB2 1"
+    },
+    {
+      "Item Code": "0003D3AA",
+      "Item Name": "Zipper Bandages",
+      "Console Command": "player.additem 0003D3AA 1"
+    }
+  ]
+  

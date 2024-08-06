@@ -1,0 +1,668 @@
+[
+    {
+      "Item Code": "246B6A",
+      "Item Name": "Adaptive Frame",
+      "Console Command": "player.additem 246B6A 1"
+    },
+    {
+      "Item Code": "55B1",
+      "Item Name": "Adhesive",
+      "Console Command": "player.additem 55B1 1"
+    },
+    {
+      "Item Code": "5DEC",
+      "Item Name": "Aldumite",
+      "Console Command": "player.additem 5DEC 1"
+    },
+    {
+      "Item Code": "202F5A",
+      "Item Name": "Aldumite Drilling Rig",
+      "Console Command": "player.additem 202F5A 1"
+    },
+    {
+      "Item Code": "C1F57",
+      "Item Name": "Alien Genetic Material",
+      "Console Command": "player.additem C1F57 1"
+    },
+    {
+      "Item Code": "5570",
+      "Item Name": "Alkanes",
+      "Console Command": "player.additem 5570 1"
+    },
+    {
+      "Item Code": "557D",
+      "Item Name": "Aluminum",
+      "Console Command": "player.additem 557D 1"
+    },
+    {
+      "Item Code": "55CD",
+      "Item Name": "Amino Acids",
+      "Console Command": "player.additem 55CD 1"
+    },
+    {
+      "Item Code": "55A9",
+      "Item Name": "Analgesic",
+      "Console Command": "player.additem 55A9 1"
+    },
+    {
+      "Item Code": "2F4436",
+      "Item Name": "Antibiotics",
+      "Console Command": "player.additem 2F4436 1"
+    },
+    {
+      "Item Code": "55AB",
+      "Item Name": "Antimicrobial",
+      "Console Command": "player.additem 55AB 1"
+    },
+    {
+      "Item Code": "557B",
+      "Item Name": "Antimony",
+      "Console Command": "player.additem 557B 1"
+    },
+    {
+      "Item Code": "5588",
+      "Item Name": "Argon",
+      "Console Command": "player.additem 5588 1"
+    },
+    {
+      "Item Code": "55B8",
+      "Item Name": "Aromatic",
+      "Console Command": "player.additem 55B8 1"
+    },
+    {
+      "Item Code": "2C5884",
+      "Item Name": "Aurora",
+      "Console Command": "player.additem 2C5884 1"
+    },
+    {
+      "Item Code": "246B7C",
+      "Item Name": "Austenitic Manifold",
+      "Console Command": "player.additem 246B7C 1"
+    },
+    {
+      "Item Code": "2A5024",
+      "Item Name": "Battlestim",
+      "Console Command": "player.additem 2A5024 1"
+    },
+    {
+      "Item Code": "5585",
+      "Item Name": "Benzene",
+      "Console Command": "player.additem 5585 1"
+    },
+    {
+      "Item Code": "57D9",
+      "Item Name": "Beryllium",
+      "Console Command": "player.additem 57D9 1"
+    },
+    {
+      "Item Code": "55B2",
+      "Item Name": "Biosuppressant",
+      "Console Command": "player.additem 55B2 1"
+    },
+    {
+      "Item Code": "122EA8",
+      "Item Name": "Black Hole Heart",
+      "Console Command": "player.additem 122EA8 1"
+    },
+    {
+      "Item Code": "2C7C0A",
+      "Item Name": "Butter",
+      "Console Command": "player.additem 2C7C0A 1"
+    },
+    {
+      "Item Code": "788D6",
+      "Item Name": "Caelumite",
+      "Console Command": "player.additem 788D6 1"
+    },
+    {
+      "Item Code": "57DF",
+      "Item Name": "Caesium",
+      "Console Command": "player.additem 57DF 1"
+    },
+    {
+      "Item Code": "2C7231",
+      "Item Name": "Can-uck! Poutine",
+      "Console Command": "player.additem 2C7231 1"
+    },
+    {
+      "Item Code": "5586",
+      "Item Name": "Carboxylic Acids",
+      "Console Command": "player.additem 5586 1"
+    },
+    {
+      "Item Code": "1FC9C1",
+      "Item Name": "Cheese",
+      "Console Command": "player.additem 1FC9C1 1"
+    },
+    {
+      "Item Code": "557C",
+      "Item Name": "Chlorine",
+      "Console Command": "player.additem 557C 1"
+    },
+    {
+      "Item Code": "557E",
+      "Item Name": "Chlorosilanes",
+      "Console Command": "player.additem 557E 1"
+    },
+    {
+      "Item Code": "249C52",
+      "Item Name": "Chunks Cola",
+      "Console Command": "player.additem 249C52 1"
+    },
+    {
+      "Item Code": "5575",
+      "Item Name": "Cobalt",
+      "Console Command": "player.additem 5575 1"
+    },
+    {
+      "Item Code": "246B64",
+      "Item Name": "Comm Relay",
+      "Console Command": "player.additem 246B64 1"
+    },
+    {
+      "Item Code": "246B7B",
+      "Item Name": "Control Rod",
+      "Console Command": "player.additem 246B7B 1"
+    },
+    {
+      "Item Code": "5576",
+      "Item Name": "Copper",
+      "Console Command": "player.additem 5576 1"
+    },
+    {
+      "Item Code": "55A8",
+      "Item Name": "Cosmetic",
+      "Console Command": "player.additem 55A8 1"
+    },
+    {
+      "Item Code": "29A85E",
+      "Item Name": "CQB-X",
+      "Console Command": "player.additem 29A85E 1"
+    },
+    {
+      "Item Code": "F",
+      "Item Name": "Credits",
+      "Console Command": "player.additem F 1"
+    },
+    {
+      "Item Code": "A",
+      "Item Name": "Digipicks",
+      "Console Command": "player.additem A 1"
+    },
+    {
+      "Item Code": "20A02F",
+      "Item Name": "Drilling Rig",
+      "Console Command": "player.additem 20A02F 1"
+    },
+    {
+      "Item Code": "122EB6",
+      "Item Name": "Dwarf Star Heart",
+      "Console Command": "player.additem 122EB6 1"
+    },
+    {
+      "Item Code": "5569",
+      "Item Name": "Dysprosium",
+      "Console Command": "player.additem 5569 1"
+    },
+    {
+      "Item Code": "2C7222",
+      "Item Name": "Egg",
+      "Console Command": "player.additem 2C7222 1"
+    },
+    {
+      "Item Code": "2A9DE8",
+      "Item Name": "Emergency Kit",
+      "Console Command": "player.additem 2A9DE8 1"
+    },
+    {
+      "Item Code": "57E1",
+      "Item Name": "Europium",
+      "Console Command": "player.additem 57E1 1"
+    },
+    {
+      "Item Code": "55AF",
+      "Item Name": "Fiber",
+      "Console Command": "player.additem 55AF 1"
+    },
+    {
+      "Item Code": "260DF0",
+      "Item Name": "Fiber (Root)",
+      "Console Command": "player.additem 260DF0 1"
+    },
+    {
+      "Item Code": "24F5C3",
+      "Item Name": "Fiber (Tissue)",
+      "Console Command": "player.additem 24F5C3 1"
+    },
+    {
+      "Item Code": "5577",
+      "Item Name": "Fluorine",
+      "Console Command": "player.additem 5577 1"
+    },
+    {
+      "Item Code": "5579",
+      "Item Name": "Gold",
+      "Console Command": "player.additem 5579 1"
+    },
+    {
+      "Item Code": "29CAD9",
+      "Item Name": "Heart+",
+      "Console Command": "player.additem 29CAD9 1"
+    },
+    {
+      "Item Code": "558E",
+      "Item Name": "Helium-3",
+      "Console Command": "player.additem 558E 1"
+    },
+    {
+      "Item Code": "55AA",
+      "Item Name": "High-Tensile Spidroin",
+      "Console Command": "player.additem 55AA 1"
+    },
+    {
+      "Item Code": "2C5883",
+      "Item Name": "Hippolyta",
+      "Console Command": "player.additem 2C5883 1"
+    },
+    {
+      "Item Code": "29F40D",
+      "Item Name": "Hypercatalyst",
+      "Console Command": "player.additem 29F40D 1"
+    },
+    {
+      "Item Code": "55B3",
+      "Item Name": "Immunostimulant",
+      "Console Command": "player.additem 55B3 1"
+    },
+    {
+      "Item Code": "4BA37",
+      "Item Name": "Indicite",
+      "Console Command": "player.additem 4BA37 1"
+    },
+    {
+      "Item Code": "203EB4",
+      "Item Name": "Indicite Wafer",
+      "Console Command": "player.additem 203EB4 1"
+    },
+    {
+      "Item Code": "29A85C",
+      "Item Name": "Infantry Alpha",
+      "Console Command": "player.additem 29A85C 1"
+    },
+    {
+      "Item Code": "557A",
+      "Item Name": "Ionic Liquids",
+      "Console Command": "player.additem 557A 1"
+    },
+    {
+      "Item Code": "558A",
+      "Item Name": "Iridium",
+      "Console Command": "player.additem 558A 1"
+    },
+    {
+      "Item Code": "556E",
+      "Item Name": "Iron",
+      "Console Command": "player.additem 556E 1"
+    },
+    {
+      "Item Code": "246B77",
+      "Item Name": "Isocentered Magnet",
+      "Console Command": "player.additem 246B77 1"
+    },
+    {
+      "Item Code": "246B76",
+      "Item Name": "Isotopic Coolant",
+      "Console Command": "player.additem 246B76 1"
+    },
+    {
+      "Item Code": "5568",
+      "Item Name": "Lead",
+      "Console Command": "player.additem 5568 1"
+    },
+    {
+      "Item Code": "29B04F",
+      "Item Name": "Liquor",
+      "Console Command": "player.additem 29B04F 1"
+    },
+    {
+      "Item Code": "557F",
+      "Item Name": "Lithium",
+      "Console Command": "player.additem 557F 1"
+    },
+    {
+      "Item Code": "55BA",
+      "Item Name": "Lubricant",
+      "Console Command": "player.additem 55BA 1"
+    },
+    {
+      "Item Code": "559E",
+      "Item Name": "Luxury Textile",
+      "Console Command": "player.additem 559E 1"
+    },
+    {
+      "Item Code": "246B70",
+      "Item Name": "Mag Pressure Tank",
+      "Console Command": "player.additem 246B70 1"
+    },
+    {
+      "Item Code": "ABF9",
+      "Item Name": "Med Pack",
+      "Console Command": "player.additem ABF9 1"
+    },
+    {
+      "Item Code": "55B0",
+      "Item Name": "Membrane",
+      "Console Command": "player.additem 55B0 1"
+    },
+    {
+      "Item Code": "559B",
+      "Item Name": "Memory Substrate",
+      "Console Command": "player.additem 559B 1"
+    },
+    {
+      "Item Code": "27C4A1",
+      "Item Name": "Mercury",
+      "Console Command": "player.additem 27C4A1 1"
+    },
+    {
+      "Item Code": "29F3FC",
+      "Item Name": "Metabolic Agent",
+      "Console Command": "player.additem 29F3FC 1"
+    },
+    {
+      "Item Code": "246B5F",
+      "Item Name": "Microsecond Regulator",
+      "Console Command": "player.additem 246B5F 1"
+    },
+    {
+      "Item Code": "246B75",
+      "Item Name": "Molecular Sieve",
+      "Console Command": "player.additem 246B75 1"
+    },
+    {
+      "Item Code": "246B74",
+      "Item Name": "Monopropellant",
+      "Console Command": "player.additem 246B74 1"
+    },
+    {
+      "Item Code": "5580",
+      "Item Name": "Neodymium",
+      "Console Command": "player.additem 5580 1"
+    },
+    {
+      "Item Code": "5587",
+      "Item Name": "Neon",
+      "Console Command": "player.additem 5587 1"
+    },
+    {
+      "Item Code": "5572",
+      "Item Name": "Nickel",
+      "Console Command": "player.additem 5572 1"
+    },
+    {
+      "Item Code": "2C7240",
+      "Item Name": "Noodles",
+      "Console Command": "player.additem 2C7240 1"
+    },
+    {
+      "Item Code": "246B79",
+      "Item Name": "Nuclear Fuel Rod",
+      "Console Command": "player.additem 246B79 1"
+    },
+    {
+      "Item Code": "777FD",
+      "Item Name": "Nutrient",
+      "Console Command": "player.additem 777FD 1"
+    },
+    {
+      "Item Code": "55A7",
+      "Item Name": "Ornamental Material",
+      "Console Command": "player.additem 55A7 1"
+    },
+    {
+      "Item Code": "5574",
+      "Item Name": "Palladium",
+      "Console Command": "player.additem 5574 1"
+    },
+    {
+      "Item Code": "246B73",
+      "Item Name": "Paramagnon Conductor",
+      "Console Command": "player.additem 246B73 1"
+    },
+    {
+      "Item Code": "29F400",
+      "Item Name": "Pigment",
+      "Console Command": "player.additem 29F400 1"
+    },
+    {
+      "Item Code": "5573",
+      "Item Name": "Platinum",
+      "Console Command": "player.additem 5573 1"
+    },
+    {
+      "Item Code": "558C",
+      "Item Name": "Plutonium",
+      "Console Command": "player.additem 558C 1"
+    },
+    {
+      "Item Code": "55A6",
+      "Item Name": "Polymer",
+      "Console Command": "player.additem 55A6 1"
+    },
+    {
+      "Item Code": "246B72",
+      "Item Name": "Polytextile",
+      "Console Command": "player.additem 246B72 1"
+    },
+    {
+      "Item Code": "246B71",
+      "Item Name": "Positron Battery",
+      "Console Command": "player.additem 246B71 1"
+    },
+    {
+      "Item Code": "246B5C",
+      "Item Name": "Power Circuit",
+      "Console Command": "player.additem 246B5C 1"
+    },
+    {
+      "Item Code": "246B6F",
+      "Item Name": "Reactive Gauge",
+      "Console Command": "player.additem 246B6F 1"
+    },
+    {
+      "Item Code": "304D0",
+      "Item Name": "Red Meat",
+      "Console Command": "player.additem 304D0 1"
+    },
+    {
+      "Item Code": "28DF",
+      "Item Name": "Rothicite",
+      "Console Command": "player.additem 28DF 1"
+    },
+    {
+      "Item Code": "203EB2",
+      "Item Name": "Rothicite Magnet",
+      "Console Command": "player.additem 203EB2 1"
+    },
+    {
+      "Item Code": "55CC",
+      "Item Name": "Sealant",
+      "Console Command": "player.additem 55CC 1"
+    },
+    {
+      "Item Code": "55AD",
+      "Item Name": "Sedative",
+      "Console Command": "player.additem 55AD 1"
+    },
+    {
+      "Item Code": "246B6D",
+      "Item Name": "Semimetal Wafer",
+      "Console Command": "player.additem 246B6D 1"
+    },
+    {
+      "Item Code": "556A",
+      "Item Name": "Silver",
+      "Console Command": "player.additem 556A 1"
+    },
+    {
+      "Item Code": "55CE",
+      "Item Name": "Solvent",
+      "Console Command": "player.additem 55CE 1"
+    },
+    {
+      "Item Code": "55AC",
+      "Item Name": "Spice",
+      "Console Command": "player.additem 55AC 1"
+    },
+    {
+      "Item Code": "2A9DE7",
+      "Item Name": "Squall",
+      "Console Command": "player.additem 2A9DE7 1"
+    },
+    {
+      "Item Code": "246B6C",
+      "Item Name": "Sterile Nanotubes",
+      "Console Command": "player.additem 246B6C 1"
+    },
+    {
+      "Item Code": "55AE",
+      "Item Name": "Stimulant",
+      "Console Command": "player.additem 55AE 1"
+    },
+    {
+      "Item Code": "55B9",
+      "Item Name": "Structural Material",
+      "Console Command": "player.additem 55B9 1"
+    },
+    {
+      "Item Code": "122EB1",
+      "Item Name": "Subgiant Heart",
+      "Console Command": "player.additem 122EB1 1"
+    },
+    {
+      "Item Code": "202782",
+      "Item Name": "Substrate Molecule Sieve",
+      "Console Command": "player.additem 202782 1"
+    },
+    {
+      "Item Code": "246B69",
+      "Item Name": "Supercooled Magnet",
+      "Console Command": "player.additem 246B69 1"
+    },
+    {
+      "Item Code": "2C5880",
+      "Item Name": "Synapse Alpha",
+      "Console Command": "player.additem 2C5880 1"
+    },
+    {
+      "Item Code": "2C7242",
+      "Item Name": "Synthameat Chicken",
+      "Console Command": "player.additem 2C7242 1"
+    },
+    {
+      "Item Code": "556F",
+      "Item Name": "Tantalum",
+      "Console Command": "player.additem 556F 1"
+    },
+    {
+      "Item Code": "5DED",
+      "Item Name": "Tasine",
+      "Console Command": "player.additem 5DED 1"
+    },
+    {
+      "Item Code": "203EAF",
+      "Item Name": "Tasine Superconductor",
+      "Console Command": "player.additem 203EAF 1"
+    },
+    {
+      "Item Code": "246B68",
+      "Item Name": "Tau Grade Rheostat",
+      "Console Command": "player.additem 246B68 1"
+    },
+    {
+      "Item Code": "5578",
+      "Item Name": "Tetrafluorides",
+      "Console Command": "player.additem 5578 1"
+    },
+    {
+      "Item Code": "556D",
+      "Item Name": "Titanium",
+      "Console Command": "player.additem 556D 1"
+    },
+    {
+      "Item Code": "55CB",
+      "Item Name": "Toxin",
+      "Console Command": "player.additem 55CB 1"
+    },
+    {
+      "Item Code": "29A847",
+      "Item Name": "Trauma Pack",
+      "Console Command": "player.additem 29A847 1"
+    },
+    {
+      "Item Code": "556B",
+      "Item Name": "Tungsten",
+      "Console Command": "player.additem 556B 1"
+    },
+    {
+      "Item Code": "5589",
+      "Item Name": "Uranium",
+      "Console Command": "player.additem 5589 1"
+    },
+    {
+      "Item Code": "558B",
+      "Item Name": "Vanadium",
+      "Console Command": "player.additem 558B 1"
+    },
+    {
+      "Item Code": "5DEE",
+      "Item Name": "Veryl",
+      "Console Command": "player.additem 5DEE 1"
+    },
+    {
+      "Item Code": "203EB0",
+      "Item Name": "Veryl-Treated Manifold",
+      "Console Command": "player.additem 203EB0 1"
+    },
+    {
+      "Item Code": "5DEF",
+      "Item Name": "Vytinium",
+      "Console Command": "player.additem 5DEF 1"
+    },
+    {
+      "Item Code": "203EB3",
+      "Item Name": "Vytinium Fuel Rod",
+      "Console Command": "player.additem 203EB3 1"
+    },
+    {
+      "Item Code": "5591",
+      "Item Name": "Water",
+      "Console Command": "player.additem 5591 1"
+    },
+    {
+      "Item Code": "143CB2",
+      "Item Name": "Whiteout",
+      "Console Command": "player.additem 143CB2 1"
+    },
+    {
+      "Item Code": "57DD",
+      "Item Name": "Xenon",
+      "Console Command": "player.additem 57DD 1"
+    },
+    {
+      "Item Code": "5571",
+      "Item Name": "Ytterbium",
+      "Console Command": "player.additem 5571 1"
+    },
+    {
+      "Item Code": "246B65",
+      "Item Name": "Zero Wire",
+      "Console Command": "player.additem 246B65 1"
+    },
+    {
+      "Item Code": "246B66",
+      "Item Name": "Zero-G Gimbal",
+      "Console Command": "player.additem 246B66 1"
+    }
+  ]
+  

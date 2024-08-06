@@ -1,0 +1,113 @@
+[
+    {
+      "Item Code": "002B559C",
+      "Item Name": ".27 Caliber",
+      "Console Command": "player.additem 002B559C 1"
+    },
+    {
+      "Item Code": "002B559A",
+      "Item Name": ".43 MI Array",
+      "Console Command": "player.additem 002B559A 1"
+    },
+    {
+      "Item Code": "002B5599",
+      "Item Name": ".43 Ultramag",
+      "Console Command": "player.additem 002B5599 1"
+    },
+    {
+      "Item Code": "002B5598",
+      "Item Name": ".45 Caliber ACP",
+      "Console Command": "player.additem 002B5598 1"
+    },
+    {
+      "Item Code": "002B5597",
+      "Item Name": ".50 Caliber Caseless",
+      "Console Command": "player.additem 002B5597 1"
+    },
+    {
+      "Item Code": "002B5596",
+      "Item Name": ".50 MI Array",
+      "Console Command": "player.additem 002B5596 1"
+    },
+    {
+      "Item Code": "002BAE3F",
+      "Item Name": "1.5KV LZR Cartridges",
+      "Console Command": "player.additem 002BAE3F 1"
+    },
+    {
+      "Item Code": "002B5595",
+      "Item Name": "11MM Caseless",
+      "Console Command": "player.additem 002B5595 1"
+    },
+    {
+      "Item Code": "002B5594",
+      "Item Name": "12.5MM ST Rivet",
+      "Console Command": "player.additem 002B5594 1"
+    },
+    {
+      "Item Code": "000547A1",
+      "Item Name": "12G Shotgun Shell",
+      "Console Command": "player.additem 000547A1 1"
+    },
+    {
+      "Item Code": "002B4AFC",
+      "Item Name": "15X25 CLL Shotgun Shell",
+      "Console Command": "player.additem 002B4AFC 1"
+    },
+    {
+      "Item Code": "0000E8EC",
+      "Item Name": "3KV LZR Cartridge",
+      "Console Command": "player.additem 0000E8EC 1"
+    },
+    {
+      "Item Code": "002B5592",
+      "Item Name": "40MM XPL",
+      "Console Command": "player.additem 002B5592 1"
+    },
+    {
+      "Item Code": "002B5590",
+      "Item Name": "6.5MM CT",
+      "Console Command": "player.additem 002B5590 1"
+    },
+    {
+      "Item Code": "002B558F",
+      "Item Name": "6.5MM MI Array",
+      "Console Command": "player.additem 002B558F 1"
+    },
+    {
+      "Item Code": "002B558E",
+      "Item Name": "7.5MM Whitehot",
+      "Console Command": "player.additem 002B558E 1"
+    },
+    {
+      "Item Code": "002B558D",
+      "Item Name": "7.62x39MM",
+      "Console Command": "player.additem 002B558D 1"
+    },
+    {
+      "Item Code": "0004AD3E",
+      "Item Name": "7.77MM Caseless",
+      "Console Command": "player.additem 0004AD3E 1"
+    },
+    {
+      "Item Code": "002B559B",
+      "Item Name": "9x39MM",
+      "Console Command": "player.additem 002B559B 1"
+    },
+    {
+      "Item Code": "002B4AFB",
+      "Item Name": "Caseless Shotgun Shell",
+      "Console Command": "player.additem 002B4AFB 1"
+    },
+    {
+      "Item Code": "002B558B",
+      "Item Name": "Heavy Particle Fuse",
+      "Console Command": "player.additem 002B558B 1"
+    },
+    {
+      "Item Code": "002783C7",
+      "Item Name": "Light Particle Fuse",
+      "Console Command": "player.additem 002783C7 1"
+    }
+  ]
+  

@@ -1,0 +1,573 @@
+[
+    {
+      "Item Code": "3E3D51",
+      "Item Name": "Ambassador Suit",
+      "Console Command": "player.additem 3E3D51 1"
+    },
+    {
+      "Item Code": "1C84DB",
+      "Item Name": "Argos Jacketed Jumpsuit",
+      "Console Command": "player.additem 1C84DB 1"
+    },
+    {
+      "Item Code": "3FDBF7",
+      "Item Name": "B.Morgan's Suit",
+      "Console Command": "player.additem 3FDBF7 1"
+    },
+    {
+      "Item Code": "3E8E7F",
+      "Item Name": "Bayu's Corpwear",
+      "Console Command": "player.additem 3E8E7F 1"
+    },
+    {
+      "Item Code": "29E174",
+      "Item Name": "Blue Labor Jumpsuit",
+      "Console Command": "player.additem 29E174 1"
+    },
+    {
+      "Item Code": "235B7D",
+      "Item Name": "Clean Suit",
+      "Console Command": "player.additem 235B7D 1"
+    },
+    {
+      "Item Code": "1A4253",
+      "Item Name": "Corpo Boardroom Suit",
+      "Console Command": "player.additem 1A4253 1"
+    },
+    {
+      "Item Code": "190D0B",
+      "Item Name": "Corpo Executive Suit",
+      "Console Command": "player.additem 190D0B 1"
+    },
+    {
+      "Item Code": "2265B0",
+      "Item Name": "Corpo Power Suit",
+      "Console Command": "player.additem 2265B0 1"
+    },
+    {
+      "Item Code": "19F9C1",
+      "Item Name": "Corpo Salary Suit",
+      "Console Command": "player.additem 19F9C1 1"
+    },
+    {
+      "Item Code": "2265B1",
+      "Item Name": "Corpo Sleek Suit",
+      "Console Command": "player.additem 2265B1 1"
+    },
+    {
+      "Item Code": "1F1DCE",
+      "Item Name": "Cream and Blue Dress",
+      "Console Command": "player.additem 1F1DCE 1"
+    },
+    {
+      "Item Code": "177494",
+      "Item Name": "Dalton Fienne's Suit",
+      "Console Command": "player.additem 177494 1"
+    },
+    {
+      "Item Code": "2BA0E3",
+      "Item Name": "Deputy Hat",
+      "Console Command": "player.additem 2BA0E3 1"
+    },
+    {
+      "Item Code": "2262D3",
+      "Item Name": "Disciples Tagwear",
+      "Console Command": "player.additem 2262D3 1"
+    },
+    {
+      "Item Code": "2262D5",
+      "Item Name": "Farming Hat",
+      "Console Command": "player.additem 2262D5 1"
+    },
+    {
+      "Item Code": "2262D5",
+      "Item Name": "Farming Outfit",
+      "Console Command": "player.additem 2262D5 1"
+    },
+    {
+      "Item Code": "250C86",
+      "Item Name": "Fashionable Suit",
+      "Console Command": "player.additem 250C86 1"
+    },
+    {
+      "Item Code": "10799A",
+      "Item Name": "Faye Sensavahn's Outfit",
+      "Console Command": "player.additem 10799A 1"
+    },
+    {
+      "Item Code": "3EC02E",
+      "Item Name": "Filthy Physician Uniform",
+      "Console Command": "player.additem 3EC02E 1"
+    },
+    {
+      "Item Code": "3E5D26",
+      "Item Name": "First Mercenary Outfit",
+      "Console Command": "player.additem 3E5D26 1"
+    },
+    {
+      "Item Code": "228826",
+      "Item Name": "First Officer Hat",
+      "Console Command": "player.additem 228826 1"
+    },
+    {
+      "Item Code": "21113E",
+      "Item Name": "First Officer Outfit",
+      "Console Command": "player.additem 21113E 1"
+    },
+    {
+      "Item Code": "21F3F4",
+      "Item Name": "First Soldier Helmet",
+      "Console Command": "player.additem 21F3F4 1"
+    },
+    {
+      "Item Code": "228825",
+      "Item Name": "First Soldier Outfit",
+      "Console Command": "player.additem 228825 1"
+    },
+    {
+      "Item Code": "24EF42",
+      "Item Name": "Fish Worker Mask",
+      "Console Command": "player.additem 24EF42 1"
+    },
+    {
+      "Item Code": "24EF40",
+      "Item Name": "Fish Worker Splash Wear",
+      "Console Command": "player.additem 24EF40 1"
+    },
+    {
+      "Item Code": "24EF41",
+      "Item Name": "Fish Worker Wet Wear",
+      "Console Command": "player.additem 24EF41 1"
+    },
+    {
+      "Item Code": "21BBF1",
+      "Item Name": "Franklin Roosevelt's Outfit",
+      "Console Command": "player.additem 21BBF1 1"
+    },
+    {
+      "Item Code": "224FE9",
+      "Item Name": "Freestar Dustwear",
+      "Console Command": "player.additem 224FE9 1"
+    },
+    {
+      "Item Code": "21712A",
+      "Item Name": "Freestar Militia Hat",
+      "Console Command": "player.additem 21712A 1"
+    },
+    {
+      "Item Code": "228827",
+      "Item Name": "Freestar Militia Uniform",
+      "Console Command": "player.additem 228827 1"
+    },
+    {
+      "Item Code": "177492",
+      "Item Name": "Genavieve Monohan's Suit",
+      "Console Command": "player.additem 177492 1"
+    },
+    {
+      "Item Code": "1D8426",
+      "Item Name": "Genghis Khan's Hat",
+      "Console Command": "player.additem 1D8426 1"
+    },
+    {
+      "Item Code": "2262D2",
+      "Item Name": "Genghis Khan's Outfit",
+      "Console Command": "player.additem 2262D2 1"
+    },
+    {
+      "Item Code": "29E175",
+      "Item Name": "Gray Labor Jumpsuit",
+      "Console Command": "player.additem 29E175 1"
+    },
+    {
+      "Item Code": "2619EF",
+      "Item Name": "Green Fashionable Suit",
+      "Console Command": "player.additem 2619EF 1"
+    },
+    {
+      "Item Code": "29AEAE",
+      "Item Name": "HAZMAT suit",
+      "Console Command": "player.additem 29AEAE 1"
+    },
+    {
+      "Item Code": "177493",
+      "Item Name": "Imogen Salzo's Suit",
+      "Console Command": "player.additem 177493 1"
+    },
+    {
+      "Item Code": "177495",
+      "Item Name": "Linden Calderi's Suit",
+      "Console Command": "player.additem 177495 1"
+    },
+    {
+      "Item Code": "226298",
+      "Item Name": "Masako Imada's Outfit",
+      "Console Command": "player.additem 226298 1"
+    },
+    {
+      "Item Code": "30B4D",
+      "Item Name": "Matteo Khatri's Hat",
+      "Console Command": "player.additem 30B4D 1"
+    },
+    {
+      "Item Code": "30B4B",
+      "Item Name": "Matteo's Outfit",
+      "Console Command": "player.additem 30B4B 1"
+    },
+    {
+      "Item Code": "28A5",
+      "Item Name": "Medic Uniform",
+      "Console Command": "player.additem 28A5 1"
+    },
+    {
+      "Item Code": "1A52D1",
+      "Item Name": "Megacorp Executive Suit",
+      "Console Command": "player.additem 1A52D1 1"
+    },
+    {
+      "Item Code": "2262D1",
+      "Item Name": "Mei Devine's Outfit",
+      "Console Command": "player.additem 2262D1 1"
+    },
+    {
+      "Item Code": "9B72F",
+      "Item Name": "Miner Dredbreaker Outfit",
+      "Console Command": "player.additem 9B72F 1"
+    },
+    {
+      "Item Code": "26D8AA",
+      "Item Name": "Miner Hard Hat Outfit",
+      "Console Command": "player.additem 26D8AA 1"
+    },
+    {
+      "Item Code": "1D1D9",
+      "Item Name": "Miner Jacketed Jumpsuit",
+      "Console Command": "player.additem 1D1D9 1"
+    },
+    {
+      "Item Code": "1D1D7",
+      "Item Name": "Miner Jumpsuit",
+      "Console Command": "player.additem 1D1D7 1"
+    },
+    {
+      "Item Code": "1D1E7",
+      "Item Name": "Miner Utility Outfit",
+      "Console Command": "player.additem 1D1E7 1"
+    },
+    {
+      "Item Code": "225FCA",
+      "Item Name": "Naeva's Outfit",
+      "Console Command": "player.additem 225FCA 1"
+    },
+    {
+      "Item Code": "C47A0",
+      "Item Name": "NASA Lab Uniform",
+      "Console Command": "player.additem C47A0 1"
+    },
+    {
+      "Item Code": "1F1DC9",
+      "Item Name": "Navy Tan Dress",
+      "Console Command": "player.additem 1F1DC9 1"
+    },
+    {
+      "Item Code": "2266A2",
+      "Item Name": "Neocity Corp Wear",
+      "Console Command": "player.additem 2266A2 1"
+    },
+    {
+      "Item Code": "2266A3",
+      "Item Name": "Neon Businesswear",
+      "Console Command": "player.additem 2266A3 1"
+    },
+    {
+      "Item Code": "1F1DD0",
+      "Item Name": "Neon Clublife Skirt",
+      "Console Command": "player.additem 1F1DD0 1"
+    },
+    {
+      "Item Code": "C900A",
+      "Item Name": "Neon Dancer Headwear",
+      "Console Command": "player.additem C900A 1"
+    },
+    {
+      "Item Code": "225FCC",
+      "Item Name": "Neon Dancer Outfit",
+      "Console Command": "player.additem 225FCC 1"
+    },
+    {
+      "Item Code": "3556E7",
+      "Item Name": "Neon Nightlife Jumpsuit",
+      "Console Command": "player.additem 3556E7 1"
+    },
+    {
+      "Item Code": "1F1DCF",
+      "Item Name": "Neon Nightlife Skirt",
+      "Console Command": "player.additem 1F1DCF 1"
+    },
+    {
+      "Item Code": "1F73EF",
+      "Item Name": "Neon Secuirty Helmet",
+      "Console Command": "player.additem 1F73EF 1"
+    },
+    {
+      "Item Code": "225D9E",
+      "Item Name": "Neon Security Uniform",
+      "Console Command": "player.additem 225D9E 1"
+    },
+    {
+      "Item Code": "165720",
+      "Item Name": "Neon Socialite Skirt",
+      "Console Command": "player.additem 165720 1"
+    },
+    {
+      "Item Code": "1A2507",
+      "Item Name": "Neuroboost Mark I",
+      "Console Command": "player.additem 1A2507 1"
+    },
+    {
+      "Item Code": "100517",
+      "Item Name": "Neuroboost Mark II",
+      "Console Command": "player.additem 100517 1"
+    },
+    {
+      "Item Code": "100518",
+      "Item Name": "Neuroboost Mark III",
+      "Console Command": "player.additem 100518 1"
+    },
+    {
+      "Item Code": "100519",
+      "Item Name": "Neurocom Mark I",
+      "Console Command": "player.additem 100519 1"
+    },
+    {
+      "Item Code": "10051A",
+      "Item Name": "Neurocom Mark II",
+      "Console Command": "player.additem 10051A 1"
+    },
+    {
+      "Item Code": "10051B",
+      "Item Name": "Neurocom Mark III",
+      "Console Command": "player.additem 10051B 1"
+    },
+    {
+      "Item Code": "10051C",
+      "Item Name": "Neurotac Mark I",
+      "Console Command": "player.additem 10051C 1"
+    },
+    {
+      "Item Code": "10051D",
+      "Item Name": "Neurotac Mark II",
+      "Console Command": "player.additem 10051D 1"
+    },
+    {
+      "Item Code": "10051F",
+      "Item Name": "Neurotac Mark III",
+      "Console Command": "player.additem 10051F 1"
+    },
+    {
+      "Item Code": "21BBF2",
+      "Item Name": "New Atlantis Security Uniform",
+      "Console Command": "player.additem 21BBF2 1"
+    },
+    {
+      "Item Code": "225DA0",
+      "Item Name": "Nightwear",
+      "Console Command": "player.additem 225DA0 1"
+    },
+    {
+      "Item Code": "36AFC",
+      "Item Name": "Noel's Outfit",
+      "Console Command": "player.additem 36AFC 1"
+    },
+    {
+      "Item Code": "2BC183",
+      "Item Name": "Patient's Clothes",
+      "Console Command": "player.additem 2BC183 1"
+    },
+    {
+      "Item Code": "3E5D27",
+      "Item Name": "Paxton's Officer Hat",
+      "Console Command": "player.additem 3E5D27 1"
+    },
+    {
+      "Item Code": "226297",
+      "Item Name": "Physician Uniform",
+      "Console Command": "player.additem 226297 1"
+    },
+    {
+      "Item Code": "2491EA",
+      "Item Name": "Prison Scrubs",
+      "Console Command": "player.additem 2491EA 1"
+    },
+    {
+      "Item Code": "1BF2F8",
+      "Item Name": "Pryce's Suit",
+      "Console Command": "player.additem 1BF2F8 1"
+    },
+    {
+      "Item Code": "2BA0E1",
+      "Item Name": "Ranger Hat",
+      "Console Command": "player.additem 2BA0E1 1"
+    },
+    {
+      "Item Code": "13730B",
+      "Item Name": "Ranger Deputy Uniform",
+      "Console Command": "player.additem 13730B 1"
+    },
+    {
+      "Item Code": "22856C",
+      "Item Name": "Ranger Duelwear",
+      "Console Command": "player.additem 22856C 1"
+    },
+    {
+      "Item Code": "28A6",
+      "Item Name": "Reliant Medical Uniform",
+      "Console Command": "player.additem 28A6 1"
+    },
+    {
+      "Item Code": "3C4E",
+      "Item Name": "Resort Wear",
+      "Console Command": "player.additem 3C4E 1"
+    },
+    {
+      "Item Code": "1823CB",
+      "Item Name": "Ryujin Lab Worker Outfit",
+      "Console Command": "player.additem 1823CB 1"
+    },
+    {
+      "Item Code": "1823CC",
+      "Item Name": "Ryujin Lab Worker Suit",
+      "Console Command": "player.additem 1823CC 1"
+    },
+    {
+      "Item Code": "1D1DE",
+      "Item Name": "Sam Coe's Outfit",
+      "Console Command": "player.additem 1D1DE 1"
+    },
+    {
+      "Item Code": "225D9F",
+      "Item Name": "Sanctum Priest Vestment",
+      "Console Command": "player.additem 225D9F 1"
+    },
+    {
+      "Item Code": "CC4D1",
+      "Item Name": "Security Flight Suit",
+      "Console Command": "player.additem CC4D1 1"
+    },
+    {
+      "Item Code": "2470D1",
+      "Item Name": "Space Trucker Flannel (with jacket)",
+      "Console Command": "player.additem 2470D1 1"
+    },
+    {
+      "Item Code": "2470D2",
+      "Item Name": "Space Trucker Flannel (without jacket)",
+      "Console Command": "player.additem 2470D2 1"
+    },
+    {
+      "Item Code": "165722",
+      "Item Name": "Space Undersuit",
+      "Console Command": "player.additem 165722 1"
+    },
+    {
+      "Item Code": "2E18F6",
+      "Item Name": "Striker Maskwear",
+      "Console Command": "player.additem 2E18F6 1"
+    },
+    {
+      "Item Code": "64A2E",
+      "Item Name": "Striker Streetwear",
+      "Console Command": "player.additem 64A2E 1"
+    },
+    {
+      "Item Code": "27189",
+      "Item Name": "Suit with Lapel Pin",
+      "Console Command": "player.additem 27189 1"
+    },
+    {
+      "Item Code": "2FA4",
+      "Item Name": "Swimsuit",
+      "Console Command": "player.additem 2FA4 1"
+    },
+    {
+      "Item Code": "11F3AD",
+      "Item Name": "Syndicate Boss Suit",
+      "Console Command": "player.additem 11F3AD 1"
+    },
+    {
+      "Item Code": "11F3A8",
+      "Item Name": "Syndicate Capo Suit",
+      "Console Command": "player.additem 11F3A8 1"
+    },
+    {
+      "Item Code": "11F3AC",
+      "Item Name": "Syndicate Club Suit",
+      "Console Command": "player.additem 11F3AC 1"
+    },
+    {
+      "Item Code": "11F3B0",
+      "Item Name": "Syndicate Pinstripes",
+      "Console Command": "player.additem 11F3B0 1"
+    },
+    {
+      "Item Code": "11F3B0",
+      "Item Name": "Syndicate Thug Suit",
+      "Console Command": "player.additem 11F3B0 1"
+    },
+    {
+      "Item Code": "11F3A7",
+      "Item Name": "Syndicate Thug Suit",
+      "Console Command": "player.additem 11F3A7 1"
+    },
+    {
+      "Item Code": "D981C",
+      "Item Name": "SYSDEF Prison Scrubs",
+      "Console Command": "player.additem D981C 1"
+    },
+    {
+      "Item Code": "2C6E7E",
+      "Item Name": "UC Navy Hat",
+      "Console Command": "player.additem 2C6E7E 1"
+    },
+    {
+      "Item Code": "2C6E7D",
+      "Item Name": "UC Navy Armored Fatigues",
+      "Console Command": "player.additem 2C6E7D 1"
+    },
+    {
+      "Item Code": "3E3ACF",
+      "Item Name": "UC Navy Duty Fatigues",
+      "Console Command": "player.additem 3E3ACF 1"
+    },
+    {
+      "Item Code": "2C6E7F",
+      "Item Name": "UC Navy Fatigues",
+      "Console Command": "player.additem 2C6E7F 1"
+    },
+    {
+      "Item Code": "3E3AD1",
+      "Item Name": "UC Navy Recon Fatigues",
+      "Console Command": "player.additem 3E3AD1 1"
+    },
+    {
+      "Item Code": "3B2A81",
+      "Item Name": "Ularu's Suit",
+      "Console Command": "player.additem 3B2A81 1"
+    },
+    {
+      "Item Code": "251F56",
+      "Item Name": "Utility Flight Suit",
+      "Console Command": "player.additem 251F56 1"
+    },
+    {
+      "Item Code": "4008C",
+      "Item Name": "Xenofresh Clean Suit",
+      "Console Command": "player.additem 4008C 1"
+    },
+    {
+      "Item Code": "29E173",
+      "Item Name": "Yellow Labor Jumpsuit",
+      "Console Command": "player.additem 29E173 1"
+    }
+  ]
+  

@@ -1,0 +1,178 @@
+[
+    {
+      "Item Code": "001C0F34",
+      "Item Name": "Bounty Hunter Seek Pack",
+      "Console Command": "player.additem 001C0F34 1"
+    },
+    {
+      "Item Code": "001C0F35",
+      "Item Name": "Bounty Hunter Stalk Pack",
+      "Console Command": "player.additem 001C0F35 1"
+    },
+    {
+      "Item Code": "001C0F33",
+      "Item Name": "Bounty Hunter Track Pack",
+      "Console Command": "player.additem 001C0F33 1"
+    },
+    {
+      "Item Code": "001E2B19",
+      "Item Name": "Constellation Pack",
+      "Console Command": "player.additem 001E2B19 1"
+    },
+    {
+      "Item Code": "0003B423",
+      "Item Name": "Cydonia Pack",
+      "Console Command": "player.additem 0003B423 1"
+    },
+    {
+      "Item Code": "002EDF1F",
+      "Item Name": "Deep Mining Pack",
+      "Console Command": "player.additem 002EDF1F 1"
+    },
+    {
+      "Item Code": "00169F55",
+      "Item Name": "Deep Recon Pack",
+      "Console Command": "player.additem 00169F55 1"
+    },
+    {
+      "Item Code": "000FD333",
+      "Item Name": "Deepcore Pack",
+      "Console Command": "player.additem 000FD333 1"
+    },
+    {
+      "Item Code": "0016D15B",
+      "Item Name": "Deepseeker Pack",
+      "Console Command": "player.additem 0016D15B 1"
+    },
+    {
+      "Item Code": "00026BEF",
+      "Item Name": "Deimos Pack",
+      "Console Command": "player.additem 00026BEF 1"
+    },
+    {
+      "Item Code": "00166407",
+      "Item Name": "Ecliptic Pack",
+      "Console Command": "player.additem 00166407 1"
+    },
+    {
+      "Item Code": "00169F51",
+      "Item Name": "Explorer Pack",
+      "Console Command": "player.additem 00169F51 1"
+    },
+    {
+      "Item Code": "002392B3",
+      "Item Name": "Ground Crew Pack",
+      "Console Command": "player.additem 002392B3 1"
+    },
+    {
+      "Item Code": "00003A77",
+      "Item Name": "High School Backpack",
+      "Console Command": "player.additem 00003A77 1"
+    },
+    {
+      "Item Code": "0016640B",
+      "Item Name": "Mantis Pack",
+      "Console Command": "player.additem 0016640B 1"
+    },
+    {
+      "Item Code": "0001754E",
+      "Item Name": "Mark I Pack",
+      "Console Command": "player.additem 0001754E 1"
+    },
+    {
+      "Item Code": "0016E0B6",
+      "Item Name": "Mercenary Pack",
+      "Console Command": "player.additem 0016E0B6 1"
+    },
+    {
+      "Item Code": "001D0F95",
+      "Item Name": "Mercury Pack",
+      "Console Command": "player.additem 001D0F95 1"
+    },
+    {
+      "Item Code": "00067C95",
+      "Item Name": "Navigator Pack",
+      "Console Command": "player.additem 00067C95 1"
+    },
+    {
+      "Item Code": "0003084C",
+      "Item Name": "Old Earth Pack",
+      "Console Command": "player.additem 0003084C 1"
+    },
+    {
+      "Item Code": "0013F97C",
+      "Item Name": "Peacemaker Pack",
+      "Console Command": "player.additem 0013F97C 1"
+    },
+    {
+      "Item Code": "00066824",
+      "Item Name": "Pirate Raiding Pack",
+      "Console Command": "player.additem 00066824 1"
+    },
+    {
+      "Item Code": "00066825",
+      "Item Name": "Pirate Survival Pack",
+      "Console Command": "player.additem 00066825 1"
+    },
+    {
+      "Item Code": "001E2AF7",
+      "Item Name": "Ranger Power Pack",
+      "Console Command": "player.additem 001E2AF7 1"
+    },
+    {
+      "Item Code": "00169F59",
+      "Item Name": "Shocktroop Pack",
+      "Console Command": "player.additem 00169F59 1"
+    },
+    {
+      "Item Code": "0016E0BB",
+      "Item Name": "Space Trucker Pack",
+      "Console Command": "player.additem 0016E0BB 1"
+    },
+    {
+      "Item Code": "00003E90",
+      "Item Name": "Star Roamer Pack",
+      "Console Command": "player.additem 00003E90 1"
+    },
+    {
+      "Item Code": "001773BD",
+      "Item Name": "SY-920 Pilot Pack",
+      "Console Command": "player.additem 001773BD 1"
+    },
+    {
+      "Item Code": "00029C7A",
+      "Item Name": "Tunnel Mining Pack",
+      "Console Command": "player.additem 00029C7A 1"
+    },
+    {
+      "Item Code": "0016640E",
+      "Item Name": "UC Ace Pilot Pack",
+      "Console Command": "player.additem 0016640E 1"
+    },
+    {
+      "Item Code": "0010A25D",
+      "Item Name": "UC Antixeno Power Pack",
+      "Console Command": "player.additem 0010A25D 1"
+    },
+    {
+      "Item Code": "00257807",
+      "Item Name": "UC Marine Pack",
+      "Console Command": "player.additem 00257807 1"
+    },
+    {
+      "Item Code": "0021A86C",
+      "Item Name": "UC Shock Armor Skip Pack",
+      "Console Command": "player.additem 0021A86C 1"
+    },
+    {
+      "Item Code": "003E3D4F",
+      "Item Name": "UC Vanguard Pilot Pack",
+      "Console Command": "player.additem 003E3D4F 1"
+    },
+    {
+      "Item Code": "0016D3D0",
+      "Item Name": "Va'ruun Pack",
+      "Console Command": "player.additem 0016D3D0 1"
+    }
+  ]
+  
