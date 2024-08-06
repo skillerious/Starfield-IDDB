@@ -1,0 +1,495 @@
+[
+    {
+      "Item Code": "2C59DF",
+      "Item Name": "Boxing",
+      "Category": "Physical",
+      "Console Command": "player.additem 2C59DF 1"
+    },
+    {
+      "Item Code": "28AE14",
+      "Item Name": "Cellular Regeneration",
+      "Category": "Physical",
+      "Console Command": "player.additem 28AE14 1"
+    },
+    {
+      "Item Code": "2C555E",
+      "Item Name": "Concealment",
+      "Category": "Physical",
+      "Console Command": "player.additem 2C555E 1"
+    },
+    {
+      "Item Code": "2CE2A0",
+      "Item Name": "Decontamination",
+      "Category": "Physical",
+      "Console Command": "player.additem 2CE2A0 1"
+    },
+    {
+      "Item Code": "2C59E2",
+      "Item Name": "Energy Weapon Dissipation",
+      "Category": "Physical",
+      "Console Command": "player.additem 2C59E2 1"
+    },
+    {
+      "Item Code": "28AE17",
+      "Item Name": "Environmental Conditioning",
+      "Category": "Physical",
+      "Console Command": "player.additem 28AE17 1"
+    },
+    {
+      "Item Code": "2CE2DD",
+      "Item Name": "Fitness",
+      "Category": "Physical",
+      "Console Command": "player.additem 2CE2DD 1"
+    },
+    {
+      "Item Code": "28AE29",
+      "Item Name": "Gymnastics",
+      "Category": "Physical",
+      "Console Command": "player.additem 28AE29 1"
+    },
+    {
+      "Item Code": "2C5554",
+      "Item Name": "Martial Arts",
+      "Category": "Physical",
+      "Console Command": "player.additem 2C5554 1"
+    },
+    {
+      "Item Code": "2C53B4",
+      "Item Name": "Neurostrikes",
+      "Category": "Physical",
+      "Console Command": "player.additem 2C53B4 1"
+    },
+    {
+      "Item Code": "2CFCAD",
+      "Item Name": "Nutrition",
+      "Category": "Physical",
+      "Console Command": "player.additem 2CFCAD 1"
+    },
+    {
+      "Item Code": "2CFCAE",
+      "Item Name": "Pain Tolerance",
+      "Category": "Physical",
+      "Console Command": "player.additem 2CFCAE 1"
+    },
+    {
+      "Item Code": "28AE13",
+      "Item Name": "Rejuvenation",
+      "Category": "Physical",
+      "Console Command": "player.additem 28AE13 1"
+    },
+    {
+      "Item Code": "2CFCB2",
+      "Item Name": "Stealth",
+      "Category": "Physical",
+      "Console Command": "player.additem 2CFCB2 1"
+    },
+    {
+      "Item Code": "2C59D9",
+      "Item Name": "Weight Lifting",
+      "Category": "Physical",
+      "Console Command": "player.additem 2C59D9 1"
+    },
+    {
+      "Item Code": "2CE2E1",
+      "Item Name": "Wellness",
+      "Category": "Physical",
+      "Console Command": "player.additem 2CE2E1 1"
+    },
+    {
+      "Item Code": "2C5A8E",
+      "Item Name": "Commerce",
+      "Category": "Social",
+      "Console Command": "player.additem 2C5A8E 1"
+    },
+    {
+      "Item Code": "2CFCAF",
+      "Item Name": "Deception",
+      "Category": "Social",
+      "Console Command": "player.additem 2CFCAF 1"
+    },
+    {
+      "Item Code": "2C59E1",
+      "Item Name": "Diplomacy",
+      "Category": "Social",
+      "Console Command": "player.additem 2C59E1 1"
+    },
+    {
+      "Item Code": "2C5A94",
+      "Item Name": "Gastronomy",
+      "Category": "Social",
+      "Console Command": "player.additem 2C5A94 1"
+    },
+    {
+      "Item Code": "2C555D",
+      "Item Name": "Instigation",
+      "Category": "Social",
+      "Console Command": "player.additem 2C555D 1"
+    },
+    {
+      "Item Code": "2C59DE",
+      "Item Name": "Intimidation",
+      "Category": "Social",
+      "Console Command": "player.additem 2C59DE 1"
+    },
+    {
+      "Item Code": "2C53AE",
+      "Item Name": "Isolation",
+      "Category": "Social",
+      "Console Command": "player.additem 2C53AE 1"
+    },
+    {
+      "Item Code": "2C890D",
+      "Item Name": "Leadership",
+      "Category": "Social",
+      "Console Command": "player.additem 2C890D 1"
+    },
+    {
+      "Item Code": "2C5555",
+      "Item Name": "Manipulation",
+      "Category": "Social",
+      "Console Command": "player.additem 2C5555 1"
+    },
+    {
+      "Item Code": "2C555F",
+      "Item Name": "Negotiation",
+      "Category": "Social",
+      "Console Command": "player.additem 2C555F 1"
+    },
+    {
+      "Item Code": "23826F",
+      "Item Name": "Outpost Management",
+      "Category": "Social",
+      "Console Command": "player.additem 23826F 1"
+    },
+    {
+      "Item Code": "22EC82",
+      "Item Name": "Persuasion",
+      "Category": "Social",
+      "Console Command": "player.additem 22EC82 1"
+    },
+    {
+      "Item Code": "28B853",
+      "Item Name": "Scavenging",
+      "Category": "Social",
+      "Console Command": "player.additem 28B853 1"
+    },
+    {
+      "Item Code": "2C53B3",
+      "Item Name": "Ship Command",
+      "Category": "Social",
+      "Console Command": "player.additem 2C53B3 1"
+    },
+    {
+      "Item Code": "2C555B",
+      "Item Name": "Theft",
+      "Category": "Social",
+      "Console Command": "player.additem 2C555B 1"
+    },
+    {
+      "Item Code": "2C53B0",
+      "Item Name": "Xenosociology",
+      "Category": "Social",
+      "Console Command": "player.additem 2C53B0 1"
+    },
+    {
+      "Item Code": "27DF94",
+      "Item Name": "Armor Penetration",
+      "Category": "Combat",
+      "Console Command": "player.additem 27DF94 1"
+    },
+    {
+      "Item Code": "2CFCAB",
+      "Item Name": "Ballistics",
+      "Category": "Combat",
+      "Console Command": "player.additem 2CFCAB 1"
+    },
+    {
+      "Item Code": "27CBBA",
+      "Item Name": "Crippling",
+      "Category": "Combat",
+      "Console Command": "player.additem 27CBBA 1"
+    },
+    {
+      "Item Code": "2C5556",
+      "Item Name": "Demolitions",
+      "Category": "Combat",
+      "Console Command": "player.additem 2C5556 1"
+    },
+    {
+      "Item Code": "2CFCB0",
+      "Item Name": "Dueling",
+      "Category": "Combat",
+      "Console Command": "player.additem 2CFCB0 1"
+    },
+    {
+      "Item Code": "147E38",
+      "Item Name": "Heavy Weapons Certification",
+      "Category": "Combat",
+      "Console Command": "player.additem 147E38 1"
+    },
+    {
+      "Item Code": "27DF96",
+      "Item Name": "Incapacitation",
+      "Category": "Combat",
+      "Console Command": "player.additem 27DF96 1"
+    },
+    {
+      "Item Code": "2C59DD",
+      "Item Name": "Lasers",
+      "Category": "Combat",
+      "Console Command": "player.additem 2C59DD 1"
+    },
+    {
+      "Item Code": "2C890B",
+      "Item Name": "Marksmanship",
+      "Category": "Combat",
+      "Console Command": "player.additem 2C890B 1"
+    },
+    {
+      "Item Code": "27BAFD",
+      "Item Name": "Particle Beams",
+      "Category": "Combat",
+      "Console Command": "player.additem 27BAFD 1"
+    },
+    {
+      "Item Code": "2080FF",
+      "Item Name": "Pistol Certification",
+      "Category": "Combat",
+      "Console Command": "player.additem 2080FF 1"
+    },
+    {
+      "Item Code": "2C555A",
+      "Item Name": "Rapid Reloading",
+      "Category": "Combat",
+      "Console Command": "player.additem 2C555A 1"
+    },
+    {
+      "Item Code": "2CE2E0",
+      "Item Name": "Rifle Certification",
+      "Category": "Combat",
+      "Console Command": "player.additem 2CE2E0 1"
+    },
+    {
+      "Item Code": "2C53AF",
+      "Item Name": "Sharpshooting",
+      "Category": "Combat",
+      "Console Command": "player.additem 2C53AF 1"
+    },
+    {
+      "Item Code": "27DF97",
+      "Item Name": "Shotgun Certification",
+      "Category": "Combat",
+      "Console Command": "player.additem 27DF97 1"
+    },
+    {
+      "Item Code": "2C53B1",
+      "Item Name": "Sniper Certification",
+      "Category": "Combat",
+      "Console Command": "player.additem 2C53B1 1"
+    },
+    {
+      "Item Code": "2C59DA",
+      "Item Name": "Targeting",
+      "Category": "Combat",
+      "Console Command": "player.additem 2C59DA 1"
+    },
+    {
+      "Item Code": "2C2C5A",
+      "Item Name": "Aneutronic Fusion",
+      "Category": "Science",
+      "Console Command": "player.additem 2C2C5A 1"
+    },
+    {
+      "Item Code": "2C5560",
+      "Item Name": "Astrodynamics",
+      "Category": "Science",
+      "Console Command": "player.additem 2C5560 1"
+    },
+    {
+      "Item Code": "27CBBB",
+      "Item Name": "Astrophysics",
+      "Category": "Science",
+      "Console Command": "player.additem 27CBBB 1"
+    },
+    {
+      "Item Code": "2C5557",
+      "Item Name": "Botany",
+      "Category": "Science",
+      "Console Command": "player.additem 2C5557 1"
+    },
+    {
+      "Item Code": "2CE2C0",
+      "Item Name": "Chemistry",
+      "Category": "Science",
+      "Console Command": "player.additem 2CE2C0 1"
+    },
+    {
+      "Item Code": "2CE29F",
+      "Item Name": "Geology",
+      "Category": "Science",
+      "Console Command": "player.additem 2CE29F 1"
+    },
+    {
+      "Item Code": "2CE2DF",
+      "Item Name": "Medicine",
+      "Category": "Science",
+      "Console Command": "player.additem 2CE2DF 1"
+    },
+    {
+      "Item Code": "2C59E0",
+      "Item Name": "Outpost Engineering",
+      "Category": "Science",
+      "Console Command": "player.additem 2C59E0 1"
+    },
+    {
+      "Item Code": "27CBC2",
+      "Item Name": "Planetary Habitation",
+      "Category": "Science",
+      "Console Command": "player.additem 27CBC2 1"
+    },
+    {
+      "Item Code": "2C555C",
+      "Item Name": "Research Methods",
+      "Category": "Science",
+      "Console Command": "player.additem 2C555C 1"
+    },
+    {
+      "Item Code": "2CFCB1",
+      "Item Name": "Scanning",
+      "Category": "Science",
+      "Console Command": "player.additem 2CFCB1 1"
+    },
+    {
+      "Item Code": "27CBC3",
+      "Item Name": "Spacesuit Design",
+      "Category": "Science",
+      "Console Command": "player.additem 27CBC3 1"
+    },
+    {
+      "Item Code": "4CE2D",
+      "Item Name": "Special Projects",
+      "Category": "Science",
+      "Console Command": "player.additem 4CE2D 1"
+    },
+    {
+      "Item Code": "27CBC1",
+      "Item Name": "Surveying",
+      "Category": "Science",
+      "Console Command": "player.additem 27CBC1 1"
+    },
+    {
+      "Item Code": "2C890C",
+      "Item Name": "Weapon Engineering",
+      "Category": "Science",
+      "Console Command": "player.additem 2C890C 1"
+    },
+    {
+      "Item Code": "2C5552",
+      "Item Name": "Zoology",
+      "Category": "Science",
+      "Console Command": "player.additem 2C5552 1"
+    },
+    {
+      "Item Code": "27B9ED",
+      "Item Name": "Automated Weapon Systems",
+      "Category": "Tech",
+      "Console Command": "player.additem 27B9ED 1"
+    },
+    {
+      "Item Code": "2CE2C2",
+      "Item Name": "Ballistic Weapon Systems",
+      "Category": "Tech",
+      "Console Command": "player.additem 2CE2C2 1"
+    },
+    {
+      "Item Code": "8C3EE",
+      "Item Name": "Boost Assault Training",
+      "Category": "Tech",
+      "Console Command": "player.additem 8C3EE 1"
+    },
+    {
+      "Item Code": "146C2C",
+      "Item Name": "Boost Pack Training",
+      "Category": "Tech",
+      "Console Command": "player.additem 146C2C 1"
+    },
+    {
+      "Item Code": "2C53B2",
+      "Item Name": "EM Weapon Systems",
+      "Category": "Tech",
+      "Console Command": "player.additem 2C53B2 1"
+    },
+    {
+      "Item Code": "2C59DB",
+      "Item Name": "Energy Weapon Systems",
+      "Category": "Tech",
+      "Console Command": "player.additem 2C59DB 1"
+    },
+    {
+      "Item Code": "2CE2DE",
+      "Item Name": "Engine Systems",
+      "Category": "Tech",
+      "Console Command": "player.additem 2CE2DE 1"
+    },
+    {
+      "Item Code": "2C5558",
+      "Item Name": "Missile Weapon Systems",
+      "Category": "Tech",
+      "Console Command": "player.additem 2C5558 1"
+    },
+    {
+      "Item Code": "2C2C5B",
+      "Item Name": "Particle Beam Weapon Systems",
+      "Category": "Tech",
+      "Console Command": "player.additem 2C2C5B 1"
+    },
+    {
+      "Item Code": "143B6B",
+      "Item Name": "Payloads",
+      "Category": "Tech",
+      "Console Command": "player.additem 143B6B 1"
+    },
+    {
+      "Item Code": "2CFCAC",
+      "Item Name": "Piloting",
+      "Category": "Tech",
+      "Console Command": "player.additem 2CFCAC 1"
+    },
+    {
+      "Item Code": "2C5553",
+      "Item Name": "Robotics",
+      "Category": "Tech",
+      "Console Command": "player.additem 2C5553 1"
+    },
+    {
+      "Item Code": "2CE2E2",
+      "Item Name": "Security",
+      "Category": "Tech",
+      "Console Command": "player.additem 2CE2E2 1"
+    },
+    {
+      "Item Code": "2C2C59",
+      "Item Name": "Shield Systems",
+      "Category": "Tech",
+      "Console Command": "player.additem 2C2C59 1"
+    },
+    {
+      "Item Code": "2C59DC",
+      "Item Name": "Starship Design",
+      "Category": "Tech",
+      "Console Command": "player.additem 2C59DC 1"
+    },
+    {
+      "Item Code": "2AC953",
+      "Item Name": "Starship Engineering",
+      "Category": "Tech",
+      "Console Command": "player.additem 2AC953 1"
+    },
+    {
+      "Item Code": "2C5559",
+      "Item Name": "Targeting Control Systems",
+      "Category": "Tech",
+      "Console Command": "player.additem 2C5559 1"
+    }
+  ]
+  

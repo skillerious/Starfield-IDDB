@@ -1,0 +1,88 @@
+[
+    {
+      "Item Code": "227FDA",
+      "Item Name": "Alien DNA",
+      "Console Command": "player.additem 227FDA 1"
+    },
+    {
+      "Item Code": "227FDF",
+      "Item Name": "Dream Home",
+      "Console Command": "player.additem 227FDF 1"
+    },
+    {
+      "Item Code": "227FD6",
+      "Item Name": "Empath",
+      "Console Command": "player.additem 227FD6 1"
+    },
+    {
+      "Item Code": "227FD7",
+      "Item Name": "Extrovert",
+      "Console Command": "player.additem 227FD7 1"
+    },
+    {
+      "Item Code": "227FD5",
+      "Item Name": "Freestar Collective Settler",
+      "Console Command": "player.additem 227FD5 1"
+    },
+    {
+      "Item Code": "227FD9",
+      "Item Name": "Hero Worshipped",
+      "Console Command": "player.additem 227FD9 1"
+    },
+    {
+      "Item Code": "227FD8",
+      "Item Name": "Introvert",
+      "Console Command": "player.additem 227FD8 1"
+    },
+    {
+      "Item Code": "227FDE",
+      "Item Name": "Kid Stuff",
+      "Console Command": "player.additem 227FDE 1"
+    },
+    {
+      "Item Code": "227FD3",
+      "Item Name": "Neon Street Rat",
+      "Console Command": "player.additem 227FD3 1"
+    },
+    {
+      "Item Code": "227FD2",
+      "Item Name": "Raised Enlightened",
+      "Console Command": "player.additem 227FD2 1"
+    },
+    {
+      "Item Code": "227FD1",
+      "Item Name": "Raised Universal",
+      "Console Command": "player.additem 227FD1 1"
+    },
+    {
+      "Item Code": "227FD0",
+      "Item Name": "Serpent's Embrace",
+      "Console Command": "player.additem 227FD0 1"
+    },
+    {
+      "Item Code": "227FE2",
+      "Item Name": "Spaced",
+      "Console Command": "player.additem 227FE2 1"
+    },
+    {
+      "Item Code": "227FE0",
+      "Item Name": "Taskmaster",
+      "Console Command": "player.additem 227FE0 1"
+    },
+    {
+      "Item Code": "227FE1",
+      "Item Name": "Terra Firma",
+      "Console Command": "player.additem 227FE1 1"
+    },
+    {
+      "Item Code": "227FD4",
+      "Item Name": "United Colonies Native",
+      "Console Command": "player.additem 227FD4 1"
+    },
+    {
+      "Item Code": "227FDD",
+      "Item Name": "Wanted",
+      "Console Command": "player.additem 227FDD 1"
+    }
+  ]
+  

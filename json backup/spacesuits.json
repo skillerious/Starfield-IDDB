@@ -1,0 +1,237 @@
+[
+    {
+      "Item Code": "00228570",
+      "Item Name": "Bounty Hunter Spacesuit",
+      "Console Command": "player.additem 00228570 1"
+    },
+    {
+      "Item Code": "001E2B18",
+      "Item Name": "Constellation Spacesuit",
+      "Console Command": "player.additem 001E2B18 1"
+    },
+    {
+      "Item Code": "0005278E",
+      "Item Name": "Deep Mining Spacesuit",
+      "Console Command": "player.additem 0005278E 1"
+    },
+    {
+      "Item Code": "002265AE",
+      "Item Name": "Deep Recon Spacesuit",
+      "Console Command": "player.additem 002265AE 1"
+    },
+    {
+      "Item Code": "0006AC00",
+      "Item Name": "Deepcore Spacesuit",
+      "Console Command": "player.additem 0006AC00 1"
+    },
+    {
+      "Item Code": "0016D2C4",
+      "Item Name": "Deepseeker Spacesuit",
+      "Console Command": "player.additem 0016D2C4 1"
+    },
+    {
+      "Item Code": "00026BF1",
+      "Item Name": "Deimos Spacesuit",
+      "Console Command": "player.additem 00026BF1 1"
+    },
+    {
+      "Item Code": "0022856F",
+      "Item Name": "Ecliptic Spacesuit",
+      "Console Command": "player.additem 0022856F 1"
+    },
+    {
+      "Item Code": "00065925",
+      "Item Name": "Experimental Nishina Spacesuit",
+      "Console Command": "player.additem 00065925 1"
+    },
+    {
+      "Item Code": "002265AF",
+      "Item Name": "Explorer Spacesuit",
+      "Console Command": "player.additem 002265AF 1"
+    },
+    {
+      "Item Code": "0022B8F6",
+      "Item Name": "Gran-Gran's Spacesuit",
+      "Console Command": "player.additem 0022B8F6 1"
+    },
+    {
+      "Item Code": "002392B5",
+      "Item Name": "Ground Crew Spacesuit",
+      "Console Command": "player.additem 002392B5 1"
+    },
+    {
+      "Item Code": "00226299",
+      "Item Name": "Mantis Spacesuit",
+      "Console Command": "player.additem 00226299 1"
+    },
+    {
+      "Item Code": "0001754D",
+      "Item Name": "Mark I Spacesuit",
+      "Console Command": "player.additem 0001754D 1"
+    },
+    {
+      "Item Code": "00226296",
+      "Item Name": "Mercenary Spacesuit",
+      "Console Command": "player.additem 00226296 1"
+    },
+    {
+      "Item Code": "001D0F96",
+      "Item Name": "Mercury Spacesuit",
+      "Console Command": "player.additem 001D0F96 1"
+    },
+    {
+      "Item Code": "00225FC9",
+      "Item Name": "Monster Costume",
+      "Console Command": "player.additem 00225FC9 1"
+    },
+    {
+      "Item Code": "00067C94",
+      "Item Name": "Navigator Spacesuit",
+      "Console Command": "player.additem 00067C94 1"
+    },
+    {
+      "Item Code": "0003084E",
+      "Item Name": "Old Earth Spacesuit",
+      "Console Command": "player.additem 0003084E 1"
+    },
+    {
+      "Item Code": "0013F97D",
+      "Item Name": "Peacemaker Spacesuit",
+      "Console Command": "player.additem 0013F97D 1"
+    },
+    {
+      "Item Code": "00066821",
+      "Item Name": "Pirate Assault Spacesuit",
+      "Console Command": "player.additem 00066821 1"
+    },
+    {
+      "Item Code": "00066826",
+      "Item Name": "Pirate Charger Spacesuit",
+      "Console Command": "player.additem 00066826 1"
+    },
+    {
+      "Item Code": "00066828",
+      "Item Name": "Pirate Corsair Spacesuit",
+      "Console Command": "player.additem 00066828 1"
+    },
+    {
+      "Item Code": "0006682A",
+      "Item Name": "Pirate Sniper Spacesuit",
+      "Console Command": "player.additem 0006682A 1"
+    },
+    {
+      "Item Code": "00227CA0",
+      "Item Name": "Ranger Spacesuit",
+      "Console Command": "player.additem 00227CA0 1"
+    },
+    {
+      "Item Code": "002265AD",
+      "Item Name": "Shocktroop Spacesuit",
+      "Console Command": "player.additem 002265AD 1"
+    },
+    {
+      "Item Code": "0021C780",
+      "Item Name": "Space Trucker Spacesuit",
+      "Console Command": "player.additem 0021C780 1"
+    },
+    {
+      "Item Code": "00004E78",
+      "Item Name": "Star Roamer Spacesuit",
+      "Console Command": "player.additem 00004E78 1"
+    },
+    {
+      "Item Code": "0012E187",
+      "Item Name": "Starborn Spacesuit Astra",
+      "Console Command": "player.additem 0012E187 1"
+    },
+    {
+      "Item Code": "001CBA52",
+      "Item Name": "Starborn Spacesuit Avitus",
+      "Console Command": "player.additem 001CBA52 1"
+    },
+    {
+      "Item Code": "001CBA4E",
+      "Item Name": "Starborn Spacesuit Bellum",
+      "Console Command": "player.additem 001CBA4E 1"
+    },
+    {
+      "Item Code": "0021C77E",
+      "Item Name": "Starborn Spacesuit Gravitas",
+      "Console Command": "player.additem 0021C77E 1"
+    },
+    {
+      "Item Code": "001CBA4A",
+      "Item Name": "Starborn Spacesuit Locus",
+      "Console Command": "player.additem 001CBA4A 1"
+    },
+    {
+      "Item Code": "001CBA49",
+      "Item Name": "Starborn Spacesuit Materia",
+      "Console Command": "player.additem 001CBA49 1"
+    },
+    {
+      "Item Code": "002D7365",
+      "Item Name": "Starborn Spacesuit Solis",
+      "Console Command": "player.additem 002D7365 1"
+    },
+    {
+      "Item Code": "002D7346",
+      "Item Name": "Starborn Spacesuit Tempus",
+      "Console Command": "player.additem 002D7346 1"
+    },
+    {
+      "Item Code": "001CBA4D",
+      "Item Name": "Starborn Spacesuit Tenebris",
+      "Console Command": "player.additem 001CBA4D 1"
+    },
+    {
+      "Item Code": "0021C77F",
+      "Item Name": "Starborn Spacesuit Venator",
+      "Console Command": "player.additem 0021C77F 1"
+    },
+    {
+      "Item Code": "00214769",
+      "Item Name": "SY-920 Pilot Spacesuit",
+      "Console Command": "player.additem 00214769 1"
+    },
+    {
+      "Item Code": "002AAF44",
+      "Item Name": "Sysdef Ace Spacesuit",
+      "Console Command": "player.additem 002AAF44 1"
+    },
+    {
+      "Item Code": "00398104",
+      "Item Name": "Sysdef Assault Spacesuit",
+      "Console Command": "player.additem 00398104 1"
+    },
+    {
+      "Item Code": "0039810A",
+      "Item Name": "Sysdef Combat Spacesuit",
+      "Console Command": "player.additem 0039810A 1"
+    },
+    {
+      "Item Code": "00398108",
+      "Item Name": "Sysdef Recon Spacesuit",
+      "Console Command": "player.additem 00398108 1"
+    },
+    {
+      "Item Code": "00398103",
+      "Item Name": "Sysdef Spacesuit",
+      "Console Command": "player.additem 00398103 1"
+    },
+    {
+      "Item Code": "00166404",
+      "Item Name": "Trackers Alliance Spacesuit",
+      "Console Command": "player.additem 00166404 1"
+    },
+    {
+      "Item Code": "00166410",
+      "Item Name": "UC Ace Spacesuit",
+      "Console Command": "player.additem 00166410 1"
+    },
+    {
+      "Item Code": "00206130",
+      "Item Name": "UC Antixeno Spacesuit",
+      "Console Command": "player.additem 002"
+    }
+  ]

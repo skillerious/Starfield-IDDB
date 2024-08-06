@@ -1,0 +1,208 @@
+[
+    {
+      "Item Code": "001C0F32",
+      "Item Name": "Bounty Hunter Space Helmet",
+      "Console Command": "player.additem 001C0F32 1"
+    },
+    {
+      "Item Code": "001E2B17",
+      "Item Name": "Constellation Space Helmet",
+      "Console Command": "player.additem 001E2B17 1"
+    },
+    {
+      "Item Code": "0003B424",
+      "Item Name": "Cydonia Space Helmet",
+      "Console Command": "player.additem 0003B424 1"
+    },
+    {
+      "Item Code": "00052792",
+      "Item Name": "Deep Mining Space Helmet",
+      "Console Command": "player.additem 00052792 1"
+    },
+    {
+      "Item Code": "00169F54",
+      "Item Name": "Deep Recon Space Helmet",
+      "Console Command": "player.additem 00169F54 1"
+    },
+    {
+      "Item Code": "0006ABFF",
+      "Item Name": "Deepcore Space Helmet",
+      "Console Command": "player.additem 0006ABFF 1"
+    },
+    {
+      "Item Code": "0016D15C",
+      "Item Name": "Deepseeker Space Helmet",
+      "Console Command": "player.additem 0016D15C 1"
+    },
+    {
+      "Item Code": "00026BF0",
+      "Item Name": "Deimos Space Helmet",
+      "Console Command": "player.additem 00026BF0 1"
+    },
+    {
+      "Item Code": "00228829",
+      "Item Name": "Ecliptic Space Helmet",
+      "Console Command": "player.additem 00228829 1"
+    },
+    {
+      "Item Code": "00065926",
+      "Item Name": "Experimental Nishina Helmet",
+      "Console Command": "player.additem 00065926 1"
+    },
+    {
+      "Item Code": "00169F50",
+      "Item Name": "Explorer Space Helmet",
+      "Console Command": "player.additem 00169F50 1"
+    },
+    {
+      "Item Code": "001F22BC",
+      "Item Name": "Gran-Gran's Space Helmet",
+      "Console Command": "player.additem 001F22BC 1"
+    },
+    {
+      "Item Code": "002392B4",
+      "Item Name": "Ground Crew Space Helmet",
+      "Console Command": "player.additem 002392B4 1"
+    },
+    {
+      "Item Code": "0016640A",
+      "Item Name": "Mantis Space Helmet",
+      "Console Command": "player.additem 0016640A 1"
+    },
+    {
+      "Item Code": "0001754F",
+      "Item Name": "Mark I Space Helmet",
+      "Console Command": "player.additem 0001754F 1"
+    },
+    {
+      "Item Code": "0016E0B5",
+      "Item Name": "Mercenary Space Helmet",
+      "Console Command": "player.additem 0016E0B5 1"
+    },
+    {
+      "Item Code": "001D0F94",
+      "Item Name": "Mercury Space Helmet",
+      "Console Command": "player.additem 001D0F94 1"
+    },
+    {
+      "Item Code": "00067C93",
+      "Item Name": "Navigator Space Helmet",
+      "Console Command": "player.additem 00067C93 1"
+    },
+    {
+      "Item Code": "0003084D",
+      "Item Name": "Old Earth Space Helmet",
+      "Console Command": "player.additem 0003084D 1"
+    },
+    {
+      "Item Code": "0013F97B",
+      "Item Name": "Peacemaker Space Helmet",
+      "Console Command": "player.additem 0013F97B 1"
+    },
+    {
+      "Item Code": "00066822",
+      "Item Name": "Pirate Assault Space Helmet",
+      "Console Command": "player.additem 00066822 1"
+    },
+    {
+      "Item Code": "00066827",
+      "Item Name": "Pirate Charger Space Helmet",
+      "Console Command": "player.additem 00066827 1"
+    },
+    {
+      "Item Code": "00066829",
+      "Item Name": "Pirate Corsair Space Helmet",
+      "Console Command": "player.additem 00066829 1"
+    },
+    {
+      "Item Code": "0006682B",
+      "Item Name": "Pirate Sniper Space Helmet",
+      "Console Command": "player.additem 0006682B 1"
+    },
+    {
+      "Item Code": "001E2AC1",
+      "Item Name": "Ranger Space Helmet",
+      "Console Command": "player.additem 001E2AC1 1"
+    },
+    {
+      "Item Code": "00169F58",
+      "Item Name": "Shocktroop Space Helmet",
+      "Console Command": "player.additem 00169F58 1"
+    },
+    {
+      "Item Code": "0016E0BD",
+      "Item Name": "Space Trucker Space Helmet",
+      "Console Command": "player.additem 0016E0BD 1"
+    },
+    {
+      "Item Code": "00003E8F",
+      "Item Name": "Star Roamer Space Helmet",
+      "Console Command": "player.additem 00003E8F 1"
+    },
+    {
+      "Item Code": "002F4B39",
+      "Item Name": "SY-920 Pilot Space Helmet",
+      "Console Command": "player.additem 002F4B39 1"
+    },
+    {
+      "Item Code": "002AAF45",
+      "Item Name": "SysDef Ace Space Helmet",
+      "Console Command": "player.additem 002AAF45 1"
+    },
+    {
+      "Item Code": "00398106",
+      "Item Name": "SysDef Space Helmet",
+      "Console Command": "player.additem 00398106 1"
+    },
+    {
+      "Item Code": "00166403",
+      "Item Name": "Trackers Alliance Space Helmet",
+      "Console Command": "player.additem 00166403 1"
+    },
+    {
+      "Item Code": "0016640F",
+      "Item Name": "UC Ace Pilot Space Helmet",
+      "Console Command": "player.additem 0016640F 1"
+    },
+    {
+      "Item Code": "0020612E",
+      "Item Name": "UC AntiXeno Space Helmet",
+      "Console Command": "player.additem 0020612E 1"
+    },
+    {
+      "Item Code": "0025780B",
+      "Item Name": "UC Armored Space Helmet",
+      "Console Command": "player.additem 0025780B 1"
+    },
+    {
+      "Item Code": "00257806",
+      "Item Name": "UC Marine Space Helmet",
+      "Console Command": "player.additem 00257806 1"
+    },
+    {
+      "Item Code": "000EF9B2",
+      "Item Name": "UC Sec Spaceriot Helmet",
+      "Console Command": "player.additem 000EF9B2 1"
+    },
+    {
+      "Item Code": "000EF9B1",
+      "Item Name": "UC Security Space Helmet",
+      "Console Command": "player.additem 000EF9B1 1"
+    },
+    {
+      "Item Code": "0021A86B",
+      "Item Name": "UC Urbanwar Space Helmet",
+      "Console Command": "player.additem 0021A86B 1"
+    },
+    {
+      "Item Code": "00248C0E",
+      "Item Name": "UC Vanguard Space Helmet",
+      "Console Command": "player.additem 00248C0E 1"
+    },
+    {
+      "Item Code": "0016D3D1",
+      "Item Name": "Va'ruun Space Helmet",
+      "Console Command": "player.additem 0016D3D1 1"
+    }
+  ]
+  

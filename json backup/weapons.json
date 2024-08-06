@@ -1,0 +1,323 @@
+[
+    {
+      "Item Code": "31FCBF",
+      "Item Name": "Ashta Tamer",
+      "Console Command": "player.additem 31FCBF 1"
+    },
+    {
+      "Item Code": "000EC310",
+      "Item Name": "Brawler's Equinox",
+      "Console Command": "player.additem 000EC310 1"
+    },
+    {
+      "Item Code": "2F99FF",
+      "Item Name": "Ember",
+      "Console Command": "player.additem 2F99FF 1"
+    },
+    {
+      "Item Code": "329ABB",
+      "Item Name": "Eternity's Gate",
+      "Console Command": "player.additem 329ABB 1"
+    },
+    {
+      "Item Code": "31F257",
+      "Item Name": "Experiment A-7",
+      "Console Command": "player.additem 31F257 1"
+    },
+    {
+      "Item Code": "002E073B",
+      "Item Name": "Ace Sidearm",
+      "Console Command": "player.additem 002E073B 1"
+    },
+    {
+      "Item Code": "1F27F5",
+      "Item Name": "Sir Livingstone's Pistol",
+      "Console Command": "player.additem 1F27F5 1"
+    },
+    {
+      "Item Code": "32046A",
+      "Item Name": "Heller's Cutter",
+      "Console Command": "player.additem 32046A 1"
+    },
+    {
+      "Item Code": "1F02EF",
+      "Item Name": "Unmitigated Violence",
+      "Console Command": "player.additem 1F02EF 1"
+    },
+    {
+      "Item Code": "001AC6BB",
+      "Item Name": "N67 Smartgun",
+      "Console Command": "player.additem 001AC6BB 1"
+    },
+    {
+      "Item Code": "00162CFA",
+      "Item Name": "Rapidshot",
+      "Console Command": "player.additem 00162CFA 1"
+    },
+    {
+      "Item Code": "8AF62",
+      "Item Name": "Revenant",
+      "Console Command": "player.additem 8AF62 1"
+    },
+    {
+      "Item Code": "8D850",
+      "Item Name": "Keelhauler",
+      "Console Command": "player.additem 8D850 1"
+    },
+    {
+      "Item Code": "002E0735",
+      "Item Name": "Boom Boom",
+      "Console Command": "player.additem 002E0735 1"
+    },
+    {
+      "Item Code": "002F99FE",
+      "Item Name": "Marksman's AA-99",
+      "Console Command": "player.additem 002F99FE 1"
+    },
+    {
+      "Item Code": "001BBF2A",
+      "Item Name": "Deadeye",
+      "Console Command": "player.additem 001BBF2A 1"
+    },
+    {
+      "Item Code": "1A52E5",
+      "Item Name": "Peacekeeper",
+      "Console Command": "player.additem 1A52E5 1"
+    },
+    {
+      "Item Code": "002E0725",
+      "Item Name": "Elegance",
+      "Console Command": "player.additem 002E0725 1"
+    },
+    {
+      "Item Code": "002D7913",
+      "Item Name": "The Zapper",
+      "Console Command": "player.additem 002D7913 1"
+    },
+    {
+      "Item Code": "002FAD3F",
+      "Item Name": "Head Ranger",
+      "Console Command": "player.additem 002FAD3F 1"
+    },
+    {
+      "Item Code": "002DFD41",
+      "Item Name": "The Prime",
+      "Console Command": "player.additem 002DFD41 1"
+    },
+    {
+      "Item Code": "0022A8E1",
+      "Item Name": "Power Beat",
+      "Console Command": "player.additem 0022A8E1 1"
+    },
+    {
+      "Item Code": "002E3E83",
+      "Item Name": "Hunterwulf",
+      "Console Command": "player.additem 002E3E83 1"
+    },
+    {
+      "Item Code": "002E82A0",
+      "Item Name": "Feather",
+      "Console Command": "player.additem 002E82A0 1"
+    },
+    {
+      "Item Code": "002E0729",
+      "Item Name": "Fury",
+      "Console Command": "player.additem 002E0729 1"
+    },
+    {
+      "Item Code": "002FAC64",
+      "Item Name": "Pirate Legend",
+      "Console Command": "player.additem 002FAC64 1"
+    },
+    {
+      "Item Code": "0020772C",
+      "Item Name": "The Buzzcut",
+      "Console Command": "player.additem 0020772C 1"
+    },
+    {
+      "Item Code": "001AC6C0",
+      "Item Name": "The Spacer",
+      "Console Command": "player.additem 001AC6C0 1"
+    },
+    {
+      "Item Code": "001AC6B8",
+      "Item Name": "Poisonstorm",
+      "Console Command": "player.additem 001AC6B8 1"
+    },
+    {
+      "Item Code": "002AC049",
+      "Item Name": "Mindtear",
+      "Console Command": "player.additem 002AC049 1"
+    },
+    {
+      "Item Code": "CAB0",
+      "Item Name": "The Mutineer",
+      "Console Command": "player.additem CAB0 1"
+    },
+    {
+      "Item Code": "002F3B1A",
+      "Item Name": "Street Sweeper",
+      "Console Command": "player.additem 002F3B1A 1"
+    },
+    {
+      "Item Code": "3CE4B0",
+      "Item Name": "Tempest",
+      "Console Command": "player.additem 3CE4B0 1"
+    },
+    {
+      "Item Code": "3CE4B1",
+      "Item Name": "Unfair Advantage",
+      "Console Command": "player.additem 3CE4B1 1"
+    },
+    {
+      "Item Code": "00207711",
+      "Item Name": "Radburn",
+      "Console Command": "player.additem 00207711 1"
+    },
+    {
+      "Item Code": "1EEE4F",
+      "Item Name": "Ambassador",
+      "Console Command": "player.additem 1EEE4F 1"
+    },
+    {
+      "Item Code": "001AC6B1",
+      "Item Name": "Trickshot",
+      "Console Command": "player.additem 001AC6B1 1"
+    },
+    {
+      "Item Code": "002E0727",
+      "Item Name": "Reckless Bombardment",
+      "Console Command": "player.additem 002E0727 1"
+    },
+    {
+      "Item Code": "002FAC66",
+      "Item Name": "Vampire's Gift",
+      "Console Command": "player.additem 002FAC66 1"
+    },
+    {
+      "Item Code": "8AF5D",
+      "Item Name": "X-989 Microgun",
+      "Console Command": "player.additem 8AF5D 1"
+    },
+    {
+      "Item Code": "000EC2F9",
+      "Item Name": "Shattered Shock",
+      "Console Command": "player.additem 000EC2F9 1"
+    },
+    {
+      "Item Code": "001BAA3C",
+      "Item Name": "Justifier",
+      "Console Command": "player.additem 001BAA3C 1"
+    },
+    {
+      "Item Code": "14920B",
+      "Item Name": "Despondent Assassin",
+      "Console Command": "player.additem 14920B 1"
+    },
+    {
+      "Item Code": "001AC6E0",
+      "Item Name": "Brute Force",
+      "Console Command": "player.additem 001AC6E0 1"
+    },
+    {
+      "Item Code": "002E7C9C",
+      "Item Name": "Short Circuit",
+      "Console Command": "player.additem 002E7C9C 1"
+    },
+    {
+      "Item Code": "002E3E85",
+      "Item Name": "Acid Rain",
+      "Console Command": "player.additem 002E3E85 1"
+    },
+    {
+      "Item Code": "002E0731",
+      "Item Name": "Speechless Fire",
+      "Console Command": "player.additem 002E0731 1"
+    },
+    {
+      "Item Code": "19F5",
+      "Item Name": "Fiscal Quarter",
+      "Console Command": "player.additem 19F5 1"
+    },
+    {
+      "Item Code": "32046C",
+      "Item Name": "Gallow's Reach",
+      "Console Command": "player.additem 32046C 1"
+    },
+    {
+      "Item Code": "0022A8E2",
+      "Item Name": "The Last Breath",
+      "Console Command": "player.additem 0022A8E2 1"
+    },
+    {
+      "Item Code": "0022A90C",
+      "Item Name": "Terror Inflictor",
+      "Console Command": "player.additem 0022A90C 1"
+    },
+    {
+      "Item Code": "0022A90D",
+      "Item Name": "Reflection",
+      "Console Command": "player.additem 0022A90D 1"
+    },
+    {
+      "Item Code": "001AC6B4",
+      "Item Name": "Avatar",
+      "Console Command": "player.additem 001AC6B4 1"
+    },
+    {
+      "Item Code": "19F7",
+      "Item Name": "Unrestrained Vengeance",
+      "Console Command": "player.additem 19F7 1"
+    },
+    {
+      "Item Code": "31F25A",
+      "Item Name": "The Last Priest",
+      "Console Command": "player.additem 31F25A 1"
+    },
+    {
+      "Item Code": "TBA",
+      "Item Name": "Syndicate Enforcer",
+      "Console Command": "player.additem TBA 1"
+    },
+    {
+      "Item Code": "2BD871",
+      "Item Name": "Jake's Hangover Cure",
+      "Console Command": "player.additem 2BD871 1"
+    },
+    {
+      "Item Code": "8AF68",
+      "Item Name": "Solace",
+      "Console Command": "player.additem 8AF68 1"
+    },
+    {
+      "Item Code": "002E82A2",
+      "Item Name": "Marathon",
+      "Console Command": "player.additem 002E82A2 1"
+    },
+    {
+      "Item Code": "E7ED1",
+      "Item Name": "Peacemaker",
+      "Console Command": "player.additem E7ED1 1"
+    },
+    {
+      "Item Code": "00316416",
+      "Item Name": "Memento Mori",
+      "Console Command": "player.additem 00316416 1"
+    },
+    {
+      "Item Code": "00207739",
+      "Item Name": "Vampire's Sidearm",
+      "Console Command": "player.additem 00207739 1"
+    },
+    {
+      "Item Code": "000EC2F1",
+      "Item Name": "Desperation",
+      "Console Command": "player.additem 000EC2F1 1"
+    },
+    {
+      "Item Code": "00162CF8",
+      "Item Name": "Riot Shotgun",
+      "Console Command": "player.additem 00162CF8 1"
+    }
+  ]
+  
