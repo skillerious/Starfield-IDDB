@@ -6,18 +6,21 @@ import pyperclip
 import shutil
 from datetime import datetime
 from PyQt5.QtWidgets import (
-    QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLineEdit,
-    QTableWidget, QTableWidgetItem, QHeaderView, QMenu, QMessageBox, QAction,
-    QFileDialog, QStatusBar, QToolBar, QLabel, QDialog, QFormLayout,
-    QComboBox, QAbstractItemView, QShortcut, QCheckBox, QSpinBox, QMainWindow,
-    QProgressBar, QColorDialog, QGroupBox, QListWidget
+    QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLineEdit, 
+    QTableWidget, QTableWidgetItem, QHeaderView, QMenu, QMessageBox, QAction, 
+    QFileDialog, QStatusBar, QToolBar, QLabel, QDialog, QFormLayout, 
+    QComboBox, QAbstractItemView, QShortcut, QCheckBox, QSpinBox, QMainWindow, 
+    QProgressBar, QColorDialog, QGroupBox, QTabWidget, QFrame
 )
-from PyQt5.QtGui import QColor, QBrush, QIcon, QKeySequence, QFont, QPainter, QPixmap
+from PyQt5.QtGui import QColor, QBrush, QIcon, QKeySequence, QPainter, QPixmap
 from PyQt5.QtCore import Qt, QTimer, QThread, pyqtSignal
 from PyQt5.QtPrintSupport import QPrinter, QPrintDialog
 import qdarkstyle
 from plyer import notification
 import requests
+from settings import load_settings, save_settings, DEFAULT_SETTINGS
+from help import HelpWindow
+from about import AboutDialog
 
 class AuditLog:
     def __init__(self, filename="audit_log.txt"):
@@ -64,6 +67,56 @@ class DownloadThread(QThread):
 
         self.finished.emit(True)
 
+class UpdateCheckThread(QThread):
+    update_available = pyqtSignal(bool, str, str)
+
+    def run(self):
+        # Update the URL to fetch the raw version.txt content directly
+        version_url = "https://raw.githubusercontent.com/skillerious/Starfield-IDDB/main/version.txt"
+        try:
+            response = requests.get(version_url)
+            if response.status_code == 200:
+                latest_version = response.text.strip()  # Get and strip the content of version.txt
+                current_version = "1.0"  # Update this to reflect the current app version.
+
+                # Debugging statement to check fetched versions
+                print(f"Fetched version: {latest_version}, Current version: {current_version}")
+
+                if latest_version > current_version:
+                    # Assuming there's a corresponding executable for the new version
+                    exe_url = f"https://github.com/skillerious/Starfield-IDDB/releases/download/{latest_version}/StarfieldIDDB-{latest_version}.exe"
+                    self.update_available.emit(True, latest_version, exe_url)
+                else:
+                    self.update_available.emit(False, current_version, "")
+            else:
+                print(f"Failed to fetch version.txt, status code: {response.status_code}")
+                self.update_available.emit(False, "", "")
+        except requests.RequestException as e:
+            print(f"Request failed: {str(e)}")
+            self.update_available.emit(False, "", str(e))
+
+            # In the main window class (or wherever this is used):
+def on_update_check_complete(self, update_available, latest_version, exe_url):
+    if update_available:
+        reply = QMessageBox.question(
+            self,
+            'Update Available',
+            f"A new version ({latest_version}) is available. Do you want to update?",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        if reply == QMessageBox.Yes:
+            update_dialog = UpdateDialog(exe_url, self)
+            update_dialog.exec_()
+        else:
+            self.status_bar.showMessage("Update postponed.")
+    else:
+        if latest_version:
+            QMessageBox.information(self, "No Update", f"You are using the latest version ({latest_version}).")
+        else:
+            QMessageBox.warning(self, "Update Check Failed", "Failed to check for updates.")
+
+    self.status_bar.showMessage("Ready")
+
 class UpdateDialog(QDialog):
     def __init__(self, url, parent=None):
         super().__init__(parent)
@@ -98,130 +151,6 @@ class UpdateDialog(QDialog):
             self.status_label.setText("Download failed.")
             self.eta_label.setText("")
 
-class FavoritesManager(QDialog):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.setWindowTitle("Manage Favorites")
-        self.setGeometry(100, 100, 800, 600)
-        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
-        self.data = []
-        self.load_favorites()
-
-        layout = QVBoxLayout(self)
-
-        self.table = QTableWidget(self)
-        self.table.setColumnCount(4)
-        self.table.setHorizontalHeaderLabels(['Item ID', 'Item Name', 'Console Command', 'Notes/Tags'])
-        header = self.table.horizontalHeader()
-        for col in range(self.table.columnCount()):
-            header.setSectionResizeMode(col, QHeaderView.Stretch)
-        self.table.horizontalHeader().setStyleSheet("""
-            QHeaderView::section {
-                background-color: #3a7ae0;
-                color: white;
-                font-weight: bold;
-                font-size: 12pt;
-                padding: 5px;
-                border: 1px solid #3a7ae0;
-            }
-        """)
-        self.table.setStyleSheet("""
-            QTableWidget {
-                gridline-color: #3a7ae0;
-                font-size: 14pt;
-                alternate-background-color: #2e2e2e;
-                background-color: #1e1e1e;
-                color: white;
-            }
-            QTableWidget::item {
-                border-bottom: 1px solid #3a7ae0;
-                padding: 10px;
-            }
-            QTableWidget::item:selected {
-                background-color: #5a9ae0;
-                color: white;
-            }
-        """)
-        self.table.setAlternatingRowColors(True)
-        layout.addWidget(self.table)
-
-        self.populate_table()
-
-        button_layout = QHBoxLayout()
-        self.add_button = QPushButton("Add", self)
-        self.add_button.clicked.connect(self.add_favorite)
-        button_layout.addWidget(self.add_button)
-
-        self.save_button = QPushButton("Save Changes", self)
-        self.save_button.clicked.connect(self.save_favorites)
-        button_layout.addWidget(self.save_button)
-
-        layout.addLayout(button_layout)
-
-    def load_favorites(self):
-        if os.path.exists("Favourites.json"):
-            with open("Favourites.json", "r") as f:
-                try:
-                    self.data = json.load(f)
-                except json.JSONDecodeError:
-                    self.data = []
-
-    def populate_table(self):
-        self.table.setRowCount(0)
-        for index, item in enumerate(self.data):
-            self.table.insertRow(self.table.rowCount())
-            self.table.setItem(self.table.rowCount() - 1, 0, QTableWidgetItem(item.get("Item Code", "")))
-            self.table.setItem(self.table.rowCount() - 1, 1, QTableWidgetItem(item.get("Item Name", "")))
-            self.table.setItem(self.table.rowCount() - 1, 2, QTableWidgetItem(item.get("Console Command", "")))
-            self.table.setItem(self.table.rowCount() - 1, 3, QTableWidgetItem(item.get("Notes/Tags", "")))
-
-            background_color = QBrush(QColor('#2e2e2e')) if index % 2 == 0 else QBrush(QColor('#1e1e1e'))
-            for col in range(self.table.columnCount()):
-                cell = self.table.item(index, col)
-                if cell:
-                    cell.setBackground(background_color)
-
-            # Increase row height
-            self.table.setRowHeight(self.table.rowCount() - 1, 50)
-
-    def add_favorite(self):
-        dialog = QDialog(self)
-        dialog.setWindowTitle("Add Favorite")
-        layout = QFormLayout()
-        item_code_edit = QLineEdit()
-        item_name_edit = QLineEdit()
-        console_command_edit = QLineEdit()
-        notes_tags_edit = QLineEdit()
-        layout.addRow("Item Code:", item_code_edit)
-        layout.addRow("Item Name:", item_name_edit)
-        layout.addRow("Console Command:", console_command_edit)
-        layout.addRow("Notes/Tags:", notes_tags_edit)
-        add_button = QPushButton("Add")
-        add_button.clicked.connect(lambda: self.save_new_favorite(dialog, item_code_edit, item_name_edit, console_command_edit, notes_tags_edit))
-        layout.addWidget(add_button)
-        dialog.setLayout(layout)
-        dialog.exec_()
-
-    def save_new_favorite(self, dialog, item_code_edit, item_name_edit, console_command_edit, notes_tags_edit):
-        new_item = {
-            "Item Code": item_code_edit.text(),
-            "Item Name": item_name_edit.text(),
-            "Console Command": console_command_edit.text(),
-            "Notes/Tags": notes_tags_edit.text()
-        }
-        self.data.append(new_item)
-        self.populate_table()
-        self.save_favorites()
-        dialog.accept()
-
-    def save_favorites(self):
-        for row in range(self.table.rowCount()):
-            self.data[row]["Notes/Tags"] = self.table.item(row, 3).text()
-
-        with open("Favourites.json", "w") as f:
-            json.dump(self.data, f)
-        self.accept()
-
 class JSONViewerApp(QMainWindow):
     def __init__(self, json_files):
         super().__init__()
@@ -246,28 +175,8 @@ class JSONViewerApp(QMainWindow):
         self.data = []
         self.undo_stack = []
         self.redo_stack = []
-        self.recent_files = []
-        self.settings = {
-            "theme": "dark",
-            "default_csv_path": "",
-            "default_json_path": "",
-            "startup_json": "Favourites",
-            "custom_json_path": "",
-            "font_size": 12,
-            "show_grid": True,
-            "row_height": 50,
-            "alternate_row_colors": True,
-            "highlight_color": "#3a7ae0",
-            "font_color": "white",
-            "background_color": "#1e1e1e",
-            "alternate_background_color": "#2e2e2e",
-            "auto_save_interval": 10,
-            "enable_notifications": True,
-            "default_export_format": "CSV",
-            "backup_frequency": 30
-        }
-        self.buttons = {}  # Store the buttons here
-        self.load_settings()
+        self.settings = load_settings()
+        self.buttons = {}
         self.search_timer = QTimer()
         self.search_timer.setSingleShot(True)
         self.search_timer.timeout.connect(self.perform_search)
@@ -281,31 +190,30 @@ class JSONViewerApp(QMainWindow):
         main_widget = QWidget()
         main_layout = QVBoxLayout(main_widget)
 
-        # Create toolbar
         toolbar = QToolBar(self)
-        toolbar.setStyleSheet("""
-            QToolBar {
+        toolbar.setStyleSheet(f"""
+            QToolBar {{
                 background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                                            stop:0 #3a3a3a, stop:1 #1e1e1e);
-                border-bottom: 1px solid #3a7ae0;
+                                            stop:0 {self.settings.get('toolbar_bg_start', '#3a3a3a')}, stop:1 {self.settings.get('toolbar_bg_end', '#1e1e1e')});
+                border-bottom: 1px solid {self.settings.get('highlight_color', '#3a7ae0')};
                 spacing: 10px;
                 padding: 5px;
-            }
-            QToolButton {
-                color: white;
+            }}
+            QToolButton {{
+                color: {self.settings.get('font_color', 'white')};
                 font-size: 12pt;
                 padding: 5px;
                 background: transparent;
                 border: none;
-            }
-            QToolButton:hover {
-                background: #3a7ae0;
+            }}
+            QToolButton:hover {{
+                background: {self.settings.get('button_hover_color', '#3a7ae0')};
                 border-radius: 5px;
-            }
-            QToolButton:pressed {
-                background: #2a69bf;
+            }}
+            QToolButton:pressed {{
+                background: {self.settings.get('button_press_color', '#2a69bf')};
                 border-radius: 5px;
-            }
+            }}
         """)
 
         new_file_action = QAction(QIcon('images/new.png'), 'New File', self)
@@ -323,10 +231,6 @@ class JSONViewerApp(QMainWindow):
         open_action = QAction(QIcon('images/open.png'), 'Open', self)
         open_action.triggered.connect(self.open_file)
         toolbar.addAction(open_action)
-
-        favorites_action = QAction(QIcon('images/favourite.png'), 'Favorites Management', self)
-        favorites_action.triggered.connect(self.manage_favorites)
-        toolbar.addAction(favorites_action)
 
         toolbar.addSeparator()
 
@@ -361,7 +265,7 @@ class JSONViewerApp(QMainWindow):
         toolbar.addSeparator()
 
         undo_action = QAction(QIcon('images/undo.png'), 'Undo', self)
-        undo_action.setShortcut('Ctrl+Z')
+        undo_action.setShortcut('Ctrl+Shift+Z')
         undo_action.triggered.connect(self.undo)
         toolbar.addAction(undo_action)
 
@@ -396,7 +300,6 @@ class JSONViewerApp(QMainWindow):
 
         self.addToolBar(toolbar)
 
-        # Create search bar
         search_layout = QHBoxLayout()
         self.search_entry = QLineEdit(self)
         self.search_entry.setPlaceholderText('Search...')
@@ -413,22 +316,21 @@ class JSONViewerApp(QMainWindow):
         
         main_layout.addLayout(search_layout)
 
-        # Create buttons for JSON files
         buttons_layout = QHBoxLayout()
         for display_name in self.file_map:
             button = QPushButton(display_name, self)
-            button.setFixedHeight(40)  # Set the height of the buttons
-            button.setStyleSheet("""
-                QPushButton {
+            button.setFixedHeight(40)
+            button.setStyleSheet(f"""
+                QPushButton {{
                     padding: 10px;
                     font-size: 12pt;
-                    border: 2px solid #3a7ae0;
-                    color: white;
+                    border: 2px solid {self.settings.get('highlight_color', '#3a7ae0')};
+                    color: {self.settings.get('font_color', 'white')};
                     background-color: transparent;
-                }
-                QPushButton:checked {
-                    background-color: #3a7ae0;
-                }
+                }}
+                QPushButton:checked {{
+                    background-color: {self.settings.get('highlight_color', '#3a7ae0')};
+                }}
             """)
             button.setCheckable(True)
             button.clicked.connect(lambda checked, f=display_name: self.load_json_with_indicator(f))
@@ -437,30 +339,28 @@ class JSONViewerApp(QMainWindow):
         
         main_layout.addLayout(buttons_layout)
 
-        # Create a stacked layout for the table and background
         stacked_layout = QVBoxLayout()
 
-        # Create table to display JSON data
         self.table = QTableWidget(self)
         self.table.setColumnCount(4)
         self.table.setHorizontalHeaderLabels(['Item ID', 'Item Name', 'Console Command', 'Favourite'])
         header = self.table.horizontalHeader()
         for col in range(self.table.columnCount()):
             header.setSectionResizeMode(col, QHeaderView.Stretch)
-        self.table.horizontalHeader().setStyleSheet("""
-            QHeaderView::section {
-                background-color: #3a7ae0;
-                color: white;
+        self.table.horizontalHeader().setStyleSheet(f"""
+            QHeaderView::section {{
+                background-color: {self.settings.get('highlight_color', '#3a7ae0')};
+                color: {self.settings.get('font_color', 'white')};
                 font-weight: bold;
-                font-size: 12pt;
+                font-size: {self.settings.get('font_size', 12)}pt;
                 padding: 5px;
-                border: 1px solid #3a7ae0;
-            }
+                border: 1px solid {self.settings.get('highlight_color', '#3a7ae0')};
+            }}
         """)
         self.table.setStyleSheet(f"""
             QTableWidget {{
                 gridline-color: {self.settings.get('highlight_color', '#3a7ae0')};
-                font-size: 14pt;
+                font-size: {self.settings.get('font_size', 14)}pt;
                 alternate-background-color: {self.settings.get('alternate_background_color', '#2e2e2e')};
                 background-color: {self.settings.get('background_color', '#1e1e1e')};
                 color: {self.settings.get('font_color', 'white')};
@@ -487,12 +387,10 @@ class JSONViewerApp(QMainWindow):
 
         main_layout.addLayout(stacked_layout)
 
-        # Create detailed item view
         self.detail_view = QLabel("Select an item to view details", self)
-        self.detail_view.setStyleSheet("color: white; padding: 10px; font-size: 12pt;")
+        self.detail_view.setStyleSheet(f"color: {self.settings.get('font_color', 'white')}; padding: 10px; font-size: {self.settings.get('font_size', 12)}pt;")
         main_layout.addWidget(self.detail_view)
 
-        # Status bar
         self.status_bar = QStatusBar(self)
         self.status_bar.showMessage("Ready")
         main_layout.addWidget(self.status_bar)
@@ -501,8 +399,9 @@ class JSONViewerApp(QMainWindow):
         self.apply_theme()
         self.setup_shortcuts()
         self.load_startup_json()
+        self.highlight_active_button()
 
-        self.showMaximized()  # Ensure the application opens maximized
+        self.showMaximized()
 
     def load_json_with_indicator(self, display_name):
         self.load_json(self.file_map[display_name])
@@ -518,6 +417,17 @@ class JSONViewerApp(QMainWindow):
                 self.load_json(self.settings["custom_json_path"])
         else:
             self.load_json(self.file_map.get(self.settings.get("startup_json", "Favourites")))
+
+    def highlight_active_button(self):
+        startup_json_name = self.settings.get("startup_json", "Favourites")
+        if startup_json_name == "Custom":
+            custom_path = self.settings.get("custom_json_path", "")
+            if custom_path:
+                for name, path in self.file_map.items():
+                    if path == custom_path:
+                        startup_json_name = name
+                        break
+        self.update_button_styles(startup_json_name)
 
     def load_json(self, filename):
         self.current_file = filename
@@ -542,21 +452,18 @@ class JSONViewerApp(QMainWindow):
             self.table.setItem(self.table.rowCount() - 1, 0, QTableWidgetItem(item.get("Item Code", "")))
             self.table.setItem(self.table.rowCount() - 1, 1, QTableWidgetItem(item.get("Item Name", "")))
 
-            # Create a QWidget to hold the console command and the buttons
             cell_widget = QWidget()
             cell_layout = QHBoxLayout()
             cell_layout.setContentsMargins(0, 0, 0, 0)
             cell_layout.setSpacing(10)
 
-            # Console command label
             console_command_label = QLabel(item.get("Console Command", ""))
-            console_command_label.setStyleSheet("color: white; background: transparent;")
+            console_command_label.setStyleSheet(f"color: {self.settings.get('font_color', 'white')}; background: transparent; font-size: {self.settings.get('font_size', 14)}pt;")
             cell_layout.addWidget(console_command_label, stretch=1)
 
-            # Copy button
             copy_button = QPushButton('Copy')
-            copy_button.setStyleSheet("background: transparent; color: white; font-size: 10pt; border: none;")
-            copy_button.setFixedSize(50, 28)  # Adjusted size of the button
+            copy_button.setStyleSheet(f"background: transparent; color: {self.settings.get('font_color', 'white')}; font-size: {self.settings.get('font_size', 12)}pt; border: none;")
+            copy_button.setFixedSize(50, 28)
             copy_button.clicked.connect(lambda ch, cmd=item.get("Console Command", ""): self.copy_command(cmd))
             cell_layout.addWidget(copy_button, stretch=0)
 
@@ -564,25 +471,20 @@ class JSONViewerApp(QMainWindow):
             cell_widget.setStyleSheet("background: transparent;")
             self.table.setCellWidget(self.table.rowCount() - 1, 2, cell_widget)
 
-            # Add star icon in the favourite column
             fav_item = QTableWidgetItem()
-            icon_path = 'images/starfull.png' if self.is_favourite(item) else 'images/star.png'
-            fav_item.setIcon(QIcon(icon_path))
             fav_item.setFlags(Qt.ItemIsEnabled | Qt.ItemIsSelectable)
             self.table.setItem(self.table.rowCount() - 1, 3, fav_item)
 
-            # Adjust the row height to accommodate the buttons
             self.table.setRowHeight(self.table.rowCount() - 1, self.settings["row_height"])
 
-            # Alternate row color using QBrush and QColor
             background_color = QBrush(QColor(self.settings.get('alternate_background_color', '#2e2e2e'))) if index % 2 == 0 else QBrush(QColor(self.settings.get('background_color', '#1e1e1e')))
-            for col in range(3):  # Updated to iterate only through the first three columns
+            for col in range(3):
                 cell = self.table.item(index, col)
                 if cell:
                     cell.setBackground(background_color)
 
     def schedule_search(self):
-        self.search_timer.start(300)  # Debounce time of 300ms
+        self.search_timer.start(300)
 
     def perform_search(self):
         search_term = self.search_entry.text().lower()
@@ -597,7 +499,6 @@ class JSONViewerApp(QMainWindow):
         search_term_edit = QLineEdit()
         layout.addRow("Search Term:", search_term_edit)
 
-        # Additional search options
         self.search_in_item_code = QCheckBox("Search in Item Code")
         self.search_in_item_code.setChecked(True)
         self.search_in_item_name = QCheckBox("Search in Item Name")
@@ -636,34 +537,6 @@ class JSONViewerApp(QMainWindow):
         self.detail_view.setText("Select an item to view details")
 
     def handle_cell_click(self, row, column):
-        if column == 3:  # Star icon column
-            item_code = self.table.item(row, 0).text()
-            item_name = self.table.item(row, 1).text()
-            console_command = self.table.cellWidget(row, 2).layout().itemAt(0).widget().text()
-            item = {
-                "Item Code": item_code,
-                "Item Name": item_name,
-                "Console Command": console_command
-            }
-            if self.is_favourite(item):
-                self.remove_from_favourites(item)
-                icon_path = os.path.join(os.getcwd(), 'images', 'starfield.png')
-                notification.notify(
-                    title='Starfield IDDB',
-                    message=f'Removed {item_name} from favourites.',
-                    app_name='Starfield IDDB',
-                    app_icon=icon_path
-                )
-            else:
-                self.add_to_favourites(item)
-                icon_path = os.path.join(os.getcwd(), 'images', 'starfield.png')
-                notification.notify(
-                    title='Starfield IDDB',
-                    message=f'Added {item_name} to favourites.',
-                    app_name='Starfield IDDB',
-                    app_icon=icon_path
-                )
-            self.populate_listbox(self.data)
         self.update_detail_view(row)
 
     def update_detail_view(self, row):
@@ -679,48 +552,6 @@ class JSONViewerApp(QMainWindow):
             self.update_detail_view(selected_row)
         else:
             self.detail_view.setText("Select an item to view details")
-
-    def is_favourite(self, item):
-        if not os.path.exists("Favourites.json"):
-            return False
-        with open("Favourites.json", "r") as f:
-            try:
-                favourites = json.load(f)
-            except json.JSONDecodeError:
-                favourites = []
-        return item in favourites
-
-    def add_to_favourites(self, item):
-        self.undo_stack.append(("remove", item))
-        self.redo_stack.clear()
-        if not os.path.exists("Favourites.json"):
-            with open("Favourites.json", "w") as f:
-                json.dump([item], f)
-        else:
-            with open("Favourites.json", "r") as f:
-                try:
-                    favourites = json.load(f)
-                except json.JSONDecodeError:
-                    favourites = []
-            favourites.append(item)
-            with open("Favourites.json", "w") as f:
-                json.dump(favourites, f)
-        audit_log.log("Add to Favourites", item)
-
-    def remove_from_favourites(self, item):
-        self.undo_stack.append(("add", item))
-        self.redo_stack.clear()
-        if not os.path.exists("Favourites.json"):
-            return
-        with open("Favourites.json", "r") as f:
-            try:
-                favourites = json.load(f)
-            except json.JSONDecodeError:
-                favourites = []
-        favourites = [fav for fav in favourites if fav != item]
-        with open("Favourites.json", "w") as f:
-            json.dump(favourites, f)
-        audit_log.log("Remove from Favourites", item)
 
     def copy_command(self, command):
         pyperclip.copy(command)
@@ -748,15 +579,7 @@ class JSONViewerApp(QMainWindow):
         }
 
         context_menu = QMenu()
-        if self.is_favourite(item):
-            remove_fav_action = QAction("Remove from Favourites", self)
-            remove_fav_action.triggered.connect(lambda: self.remove_from_favourites_from_menu(position))
-            context_menu.addAction(remove_fav_action)
-        else:
-            add_fav_action = QAction("Add to Favourites", self)
-            add_fav_action.triggered.connect(lambda: self.add_to_favourites_from_menu(position))
-            context_menu.addAction(add_fav_action)
-        
+
         copy_action = QAction("Copy", self)
         copy_action.triggered.connect(lambda: self.copy_command(item.get("Console Command", "")))
         context_menu.addAction(copy_action)
@@ -766,32 +589,6 @@ class JSONViewerApp(QMainWindow):
         context_menu.addAction(edit_action)
 
         context_menu.exec_(self.table.viewport().mapToGlobal(position))
-
-    def add_to_favourites_from_menu(self, position):
-        row = self.table.indexAt(position).row()
-        item_code = self.table.item(row, 0).text()
-        item_name = self.table.item(row, 1).text()
-        console_command = self.table.cellWidget(row, 2).layout().itemAt(0).widget().text()
-        item = {
-            "Item Code": item_code,
-            "Item Name": item_name,
-            "Console Command": console_command
-        }
-        self.add_to_favourites(item)
-        self.populate_listbox(self.data)
-
-    def remove_from_favourites_from_menu(self, position):
-        row = self.table.indexAt(position).row()
-        item_code = self.table.item(row, 0).text()
-        item_name = self.table.item(row, 1).text()
-        console_command = self.table.cellWidget(row, 2).layout().itemAt(0).widget().text()
-        item = {
-            "Item Code": item_code,
-            "Item Name": item_name,
-            "Console Command": console_command
-        }
-        self.remove_from_favourites(item)
-        self.populate_listbox(self.data)
 
     def edit_item_from_menu(self, position):
         row = self.table.indexAt(position).row()
@@ -815,20 +612,17 @@ class JSONViewerApp(QMainWindow):
         dialog.exec_()
 
     def save_edit(self, dialog, row, item_code_edit, item_name_edit, console_command_edit):
-        # Update the table widget
         self.table.setItem(row, 0, QTableWidgetItem(item_code_edit.text()))
         self.table.setItem(row, 1, QTableWidgetItem(item_name_edit.text()))
         cell_widget = self.table.cellWidget(row, 2)
         cell_widget.layout().itemAt(0).widget().setText(console_command_edit.text())
 
-        # Update the data list
         self.data[row] = {
             "Item Code": item_code_edit.text(),
             "Item Name": item_name_edit.text(),
             "Console Command": console_command_edit.text()
         }
 
-        # Save the updated data list to the current JSON file
         with open(self.current_file, 'w') as jsonfile:
             json.dump(self.data, jsonfile)
 
@@ -846,11 +640,6 @@ class JSONViewerApp(QMainWindow):
                         self.table.item(row, 0).text(), 
                         self.table.item(row, 1).text(), 
                         self.table.cellWidget(row, 2).layout().itemAt(0).widget().text(), 
-                        'Yes' if self.is_favourite({
-                            "Item Code": self.table.item(row, 0).text(),
-                            "Item Name": self.table.item(row, 1).text(),
-                            "Console Command": self.table.cellWidget(row, 2).layout().itemAt(0).widget().text()
-                        }) else 'No'
                     ])
             self.status_bar.showMessage(f"Data exported to {file_path}")
 
@@ -879,7 +668,10 @@ class JSONViewerApp(QMainWindow):
             printer.setOutputFileName(file_path)
             painter = QPainter(printer)
             screen = self.grab()
-            painter.drawPixmap(10, 10, screen)
+            screen_scaled = screen.scaled(printer.pageRect().size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            x = (printer.pageRect().width() - screen_scaled.width()) / 2
+            y = (printer.pageRect().height() - screen_scaled.height()) / 2
+            painter.drawPixmap(int(x), int(y), screen_scaled)
             painter.end()
             self.status_bar.showMessage(f"Data exported to {file_path}")
 
@@ -888,7 +680,6 @@ class JSONViewerApp(QMainWindow):
         file_path, _ = QFileDialog.getOpenFileName(self, "Open JSON File", self.settings.get("default_json_path", ""), "JSON Files (*.json);;All Files (*)", options=options)
         if file_path:
             self.load_json(file_path)
-            self.add_to_recent_files(file_path)
 
     def save_file(self):
         if not self.current_file:
@@ -931,17 +722,195 @@ class JSONViewerApp(QMainWindow):
         if print_dialog.exec_() == QPrintDialog.Accepted:
             painter = QPainter(printer)
             screen = self.grab()
-            painter.drawPixmap(10, 10, screen)
+            screen_scaled = screen.scaled(printer.pageRect().size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            x = (printer.pageRect().width() - screen_scaled.width()) / 2
+            y = (printer.pageRect().height() - screen_scaled.height()) / 2
+            painter.drawPixmap(int(x), int(y), screen_scaled)
             painter.end()
             self.status_bar.showMessage("Printed successfully")
 
     def open_settings_dialog(self):
         dialog = QDialog(self)
         dialog.setWindowTitle("Settings")
-        layout = QVBoxLayout()
+        main_layout = QVBoxLayout()
 
-        # View GroupBox
-        view_group = QGroupBox("View")
+        tabs = QTabWidget()
+
+        appearance_widget = QWidget()
+        appearance_layout = QFormLayout()
+
+        self.theme_combo = QComboBox()
+        self.theme_combo.addItems(["dark", "light"])
+        self.theme_combo.setCurrentText(self.settings["theme"])
+        appearance_layout.addRow("Theme:", self.theme_combo)
+
+        self.highlight_color_edit = QLineEdit(self.settings.get("highlight_color", "#3a7ae0"))
+        self.highlight_color_canvas = QFrame()
+        self.highlight_color_canvas.setFixedSize(20, 20)
+        self.highlight_color_canvas.setStyleSheet(f"background-color: {self.settings.get('highlight_color', '#3a7ae0')};")
+        self.highlight_color_button = QPushButton()
+        self.highlight_color_button.setIcon(QIcon("images/colorpicker.png"))
+        self.highlight_color_button.setFixedSize(25, 25)
+        self.highlight_color_button.clicked.connect(lambda: self.select_color("highlight_color", self.highlight_color_edit, self.highlight_color_canvas))
+        highlight_color_layout = QHBoxLayout()
+        highlight_color_layout.addWidget(self.highlight_color_edit)
+        highlight_color_layout.addWidget(self.highlight_color_canvas)
+        highlight_color_layout.addWidget(self.highlight_color_button)
+        appearance_layout.addRow("Highlight Color:", highlight_color_layout)
+
+        self.font_color_edit = QLineEdit(self.settings.get("font_color", "white"))
+        self.font_color_canvas = QFrame()
+        self.font_color_canvas.setFixedSize(20, 20)
+        self.font_color_canvas.setStyleSheet(f"background-color: {self.settings.get('font_color', 'white')};")
+        self.font_color_button = QPushButton()
+        self.font_color_button.setIcon(QIcon("images/colorpicker.png"))
+        self.font_color_button.setFixedSize(25, 25)
+        self.font_color_button.clicked.connect(lambda: self.select_color("font_color", self.font_color_edit, self.font_color_canvas))
+        font_color_layout = QHBoxLayout()
+        font_color_layout.addWidget(self.font_color_edit)
+        font_color_layout.addWidget(self.font_color_canvas)
+        font_color_layout.addWidget(self.font_color_button)
+        appearance_layout.addRow("Font Color:", font_color_layout)
+
+        self.background_color_edit = QLineEdit(self.settings.get("background_color", "#1e1e1e"))
+        self.background_color_canvas = QFrame()
+        self.background_color_canvas.setFixedSize(20, 20)
+        self.background_color_canvas.setStyleSheet(f"background-color: {self.settings.get('background_color', '#1e1e1e')};")
+        self.background_color_button = QPushButton()
+        self.background_color_button.setIcon(QIcon("images/colorpicker.png"))
+        self.background_color_button.setFixedSize(25, 25)
+        self.background_color_button.clicked.connect(lambda: self.select_color("background_color", self.background_color_edit, self.background_color_canvas))
+        background_color_layout = QHBoxLayout()
+        background_color_layout.addWidget(self.background_color_edit)
+        background_color_layout.addWidget(self.background_color_canvas)
+        background_color_layout.addWidget(self.background_color_button)
+        appearance_layout.addRow("Background Color:", background_color_layout)
+
+        self.alternate_background_color_edit = QLineEdit(self.settings.get("alternate_background_color", "#2e2e2e"))
+        self.alternate_background_color_canvas = QFrame()
+        self.alternate_background_color_canvas.setFixedSize(20, 20)
+        self.alternate_background_color_canvas.setStyleSheet(f"background-color: {self.settings.get('alternate_background_color', '#2e2e2e')};")
+        self.alternate_background_color_button = QPushButton()
+        self.alternate_background_color_button.setIcon(QIcon("images/colorpicker.png"))
+        self.alternate_background_color_button.setFixedSize(25, 25)
+        self.alternate_background_color_button.clicked.connect(lambda: self.select_color("alternate_background_color", self.alternate_background_color_edit, self.alternate_background_color_canvas))
+        alternate_background_color_layout = QHBoxLayout()
+        alternate_background_color_layout.addWidget(self.alternate_background_color_edit)
+        alternate_background_color_layout.addWidget(self.alternate_background_color_canvas)
+        alternate_background_color_layout.addWidget(self.alternate_background_color_button)
+        appearance_layout.addRow("Alternate Background Color:", alternate_background_color_layout)
+
+        self.border_color_edit = QLineEdit(self.settings.get("border_color", "#3a7ae0"))
+        self.border_color_canvas = QFrame()
+        self.border_color_canvas.setFixedSize(20, 20)
+        self.border_color_canvas.setStyleSheet(f"background-color: {self.settings.get('border_color', '#3a7ae0')};")
+        self.border_color_button = QPushButton()
+        self.border_color_button.setIcon(QIcon("images/colorpicker.png"))
+        self.border_color_button.setFixedSize(25, 25)
+        self.border_color_button.clicked.connect(lambda: self.select_color("border_color", self.border_color_edit, self.border_color_canvas))
+        border_color_layout = QHBoxLayout()
+        border_color_layout.addWidget(self.border_color_edit)
+        border_color_layout.addWidget(self.border_color_canvas)
+        border_color_layout.addWidget(self.border_color_button)
+        appearance_layout.addRow("Border Color:", border_color_layout)
+
+        self.button_hover_color_edit = QLineEdit(self.settings.get("button_hover_color", "#3a7ae0"))
+        self.button_hover_color_canvas = QFrame()
+        self.button_hover_color_canvas.setFixedSize(20, 20)
+        self.button_hover_color_canvas.setStyleSheet(f"background-color: {self.settings.get('button_hover_color', '#3a7ae0')};")
+        self.button_hover_color_button = QPushButton()
+        self.button_hover_color_button.setIcon(QIcon("images/colorpicker.png"))
+        self.button_hover_color_button.setFixedSize(25, 25)
+        self.button_hover_color_button.clicked.connect(lambda: self.select_color("button_hover_color", self.button_hover_color_edit, self.button_hover_color_canvas))
+        button_hover_color_layout = QHBoxLayout()
+        button_hover_color_layout.addWidget(self.button_hover_color_edit)
+        button_hover_color_layout.addWidget(self.button_hover_color_canvas)
+        button_hover_color_layout.addWidget(self.button_hover_color_button)
+        appearance_layout.addRow("Button Hover Color:", button_hover_color_layout)
+
+        self.button_press_color_edit = QLineEdit(self.settings.get("button_press_color", "#2a69bf"))
+        self.button_press_color_canvas = QFrame()
+        self.button_press_color_canvas.setFixedSize(20, 20)
+        self.button_press_color_canvas.setStyleSheet(f"background-color: {self.settings.get('button_press_color', '#2a69bf')};")
+        self.button_press_color_button = QPushButton()
+        self.button_press_color_button.setIcon(QIcon("images/colorpicker.png"))
+        self.button_press_color_button.setFixedSize(25, 25)
+        self.button_press_color_button.clicked.connect(lambda: self.select_color("button_press_color", self.button_press_color_edit, self.button_press_color_canvas))
+        button_press_color_layout = QHBoxLayout()
+        button_press_color_layout.addWidget(self.button_press_color_edit)
+        button_press_color_layout.addWidget(self.button_press_color_canvas)
+        button_press_color_layout.addWidget(self.button_press_color_button)
+        appearance_layout.addRow("Button Press Color:", button_press_color_layout)
+
+        self.toolbar_bg_start_edit = QLineEdit(self.settings.get("toolbar_bg_start", "#3a3a3a"))
+        self.toolbar_bg_start_canvas = QFrame()
+        self.toolbar_bg_start_canvas.setFixedSize(20, 20)
+        self.toolbar_bg_start_canvas.setStyleSheet(f"background-color: {self.settings.get('toolbar_bg_start', '#3a3a3a')};")
+        self.toolbar_bg_start_button = QPushButton()
+        self.toolbar_bg_start_button.setIcon(QIcon("images/colorpicker.png"))
+        self.toolbar_bg_start_button.setFixedSize(25, 25)
+        self.toolbar_bg_start_button.clicked.connect(lambda: self.select_color("toolbar_bg_start", self.toolbar_bg_start_edit, self.toolbar_bg_start_canvas))
+        toolbar_bg_start_layout = QHBoxLayout()
+        toolbar_bg_start_layout.addWidget(self.toolbar_bg_start_edit)
+        toolbar_bg_start_layout.addWidget(self.toolbar_bg_start_canvas)
+        toolbar_bg_start_layout.addWidget(self.toolbar_bg_start_button)
+        appearance_layout.addRow("Toolbar BG Start:", toolbar_bg_start_layout)
+
+        self.toolbar_bg_end_edit = QLineEdit(self.settings.get("toolbar_bg_end", "#1e1e1e"))
+        self.toolbar_bg_end_canvas = QFrame()
+        self.toolbar_bg_end_canvas.setFixedSize(20, 20)
+        self.toolbar_bg_end_canvas.setStyleSheet(f"background-color: {self.settings.get('toolbar_bg_end', '#1e1e1e')};")
+        self.toolbar_bg_end_button = QPushButton()
+        self.toolbar_bg_end_button.setIcon(QIcon("images/colorpicker.png"))
+        self.toolbar_bg_end_button.setFixedSize(25, 25)
+        self.toolbar_bg_end_button.clicked.connect(lambda: self.select_color("toolbar_bg_end", self.toolbar_bg_end_edit, self.toolbar_bg_end_canvas))
+        toolbar_bg_end_layout = QHBoxLayout()
+        toolbar_bg_end_layout.addWidget(self.toolbar_bg_end_edit)
+        toolbar_bg_end_layout.addWidget(self.toolbar_bg_end_canvas)
+        toolbar_bg_end_layout.addWidget(self.toolbar_bg_end_button)
+        appearance_layout.addRow("Toolbar BG End:", toolbar_bg_end_layout)
+
+        self.dialog_bg_color_edit = QLineEdit(self.settings.get("dialog_bg_color", "#1e1e1e"))
+        self.dialog_bg_color_canvas = QFrame()
+        self.dialog_bg_color_canvas.setFixedSize(20, 20)
+        self.dialog_bg_color_canvas.setStyleSheet(f"background-color: {self.settings.get('dialog_bg_color', '#1e1e1e')};")
+        self.dialog_bg_color_button = QPushButton()
+        self.dialog_bg_color_button.setIcon(QIcon("images/colorpicker.png"))
+        self.dialog_bg_color_button.setFixedSize(25, 25)
+        self.dialog_bg_color_button.clicked.connect(lambda: self.select_color("dialog_bg_color", self.dialog_bg_color_edit, self.dialog_bg_color_canvas))
+        dialog_bg_color_layout = QHBoxLayout()
+        dialog_bg_color_layout.addWidget(self.dialog_bg_color_edit)
+        dialog_bg_color_layout.addWidget(self.dialog_bg_color_canvas)
+        dialog_bg_color_layout.addWidget(self.dialog_bg_color_button)
+        appearance_layout.addRow("Dialog BG Color:", dialog_bg_color_layout)
+
+        self.label_color_edit = QLineEdit(self.settings.get("label_color", "white"))
+        self.label_color_canvas = QFrame()
+        self.label_color_canvas.setFixedSize(20, 20)
+        self.label_color_canvas.setStyleSheet(f"background-color: {self.settings.get('label_color', 'white')};")
+        self.label_color_button = QPushButton()
+        self.label_color_button.setIcon(QIcon("images/colorpicker.png"))
+        self.label_color_button.setFixedSize(25, 25)
+        self.label_color_button.clicked.connect(lambda: self.select_color("label_color", self.label_color_edit, self.label_color_canvas))
+        label_color_layout = QHBoxLayout()
+        label_color_layout.addWidget(self.label_color_edit)
+        label_color_layout.addWidget(self.label_color_canvas)
+        label_color_layout.addWidget(self.label_color_button)
+        appearance_layout.addRow("Label Color:", label_color_layout)
+
+        restore_colors_button = QPushButton("Restore Default Colors")
+        restore_colors_button.clicked.connect(self.restore_default_colors)
+        appearance_layout.addWidget(restore_colors_button)
+
+        self.color_palette_combo = QComboBox()
+        self.color_palette_combo.addItems(["Default", "Cool Blues", "Warm Sunset", "Forest Greens", "Desert Sands"])
+        self.color_palette_combo.currentTextChanged.connect(self.apply_color_palette)
+        appearance_layout.addRow("Color Palette:", self.color_palette_combo)
+
+        appearance_widget.setLayout(appearance_layout)
+        tabs.addTab(appearance_widget, "Appearance")
+
+        view_widget = QWidget()
         view_layout = QFormLayout()
 
         self.font_size_spinbox = QSpinBox()
@@ -962,143 +931,171 @@ class JSONViewerApp(QMainWindow):
         self.alternate_row_colors_checkbox.setChecked(self.settings.get("alternate_row_colors", True))
         view_layout.addRow(self.alternate_row_colors_checkbox)
 
-        view_group.setLayout(view_layout)
+        view_widget.setLayout(view_layout)
+        tabs.addTab(view_widget, "View")
 
-        # Color GroupBox
-        color_group = QGroupBox("Colors")
-        color_layout = QFormLayout()
+        shortcuts_widget = QWidget()
+        shortcuts_layout = QFormLayout()
 
-        self.highlight_color_button = QPushButton("Select Highlight Color")
-        self.highlight_color_button.clicked.connect(lambda: self.select_color("highlight_color"))
-        color_layout.addRow("Highlight Color:", self.highlight_color_button)
+        self.shortcut_new_file_edit = QLineEdit(self.settings.get("shortcut_new_file", "Ctrl+N"))
+        shortcuts_layout.addRow("New File Shortcut:", self.shortcut_new_file_edit)
 
-        self.font_color_button = QPushButton("Select Font Color")
-        self.font_color_button.clicked.connect(lambda: self.select_color("font_color"))
-        color_layout.addRow("Font Color:", self.font_color_button)
+        self.shortcut_add_edit = QLineEdit(self.settings.get("shortcut_add", "Ctrl+A"))
+        shortcuts_layout.addRow("Add Shortcut:", self.shortcut_add_edit)
 
-        self.background_color_button = QPushButton("Select Background Color")
-        self.background_color_button.clicked.connect(lambda: self.select_color("background_color"))
-        color_layout.addRow("Background Color:", self.background_color_button)
+        self.shortcut_edit_edit = QLineEdit(self.settings.get("shortcut_edit", "Ctrl+E"))
+        shortcuts_layout.addRow("Edit Shortcut:", self.shortcut_edit_edit)
 
-        self.alternate_background_color_button = QPushButton("Select Alternate Background Color")
-        self.alternate_background_color_button.clicked.connect(lambda: self.select_color("alternate_background_color"))
-        color_layout.addRow("Alternate Background Color:", self.alternate_background_color_button)
+        self.shortcut_open_edit = QLineEdit(self.settings.get("shortcut_open", "Ctrl+O"))
+        shortcuts_layout.addRow("Open Shortcut:", self.shortcut_open_edit)
 
-        self.theme_combo = QComboBox()
-        self.theme_combo.addItems(["dark", "light"])
-        self.theme_combo.setCurrentText(self.settings["theme"])
-        color_layout.addRow("Theme:", self.theme_combo)
+        self.shortcut_save_edit = QLineEdit(self.settings.get("shortcut_save", "Ctrl+S"))
+        shortcuts_layout.addRow("Save Shortcut:", self.shortcut_save_edit)
 
-        color_group.setLayout(color_layout)
+        self.shortcut_save_as_edit = QLineEdit(self.settings.get("shortcut_save_as", "Ctrl+Shift+S"))
+        shortcuts_layout.addRow("Save As Shortcut:", self.shortcut_save_as_edit)
 
-        layout.addWidget(view_group)
-        layout.addWidget(color_group)
+        self.shortcut_undo_edit = QLineEdit(self.settings.get("shortcut_undo", "Ctrl+Shift+Z"))
+        shortcuts_layout.addRow("Undo Shortcut:", self.shortcut_undo_edit)
 
-        # Default Paths and Startup JSON GroupBox
-        default_paths_group = QGroupBox("Default Paths and Startup JSON")
-        default_paths_layout = QFormLayout()
+        self.shortcut_redo_edit = QLineEdit(self.settings.get("shortcut_redo", "Ctrl+Y"))
+        shortcuts_layout.addRow("Redo Shortcut:", self.shortcut_redo_edit)
+
+        self.shortcut_delete_edit = QLineEdit(self.settings.get("shortcut_delete", "Delete"))
+        shortcuts_layout.addRow("Delete Shortcut:", self.shortcut_delete_edit)
+
+        shortcuts_widget.setLayout(shortcuts_layout)
+        tabs.addTab(shortcuts_widget, "Shortcuts")
+
+        defaults_widget = QWidget()
+        defaults_layout = QFormLayout()
 
         self.default_csv_path_edit = QLineEdit(self.settings.get("default_csv_path", ""))
         default_csv_path_button = QPushButton("Browse")
         default_csv_path_button.clicked.connect(self.select_default_csv_path)
-        default_paths_layout.addRow("Default CSV Path:", self.default_csv_path_edit)
-        default_paths_layout.addWidget(default_csv_path_button)
+        default_csv_path_layout = QHBoxLayout()
+        default_csv_path_layout.addWidget(self.default_csv_path_edit)
+        default_csv_path_layout.addWidget(default_csv_path_button)
+        defaults_layout.addRow("Default CSV Path:", default_csv_path_layout)
 
         self.default_json_path_edit = QLineEdit(self.settings.get("default_json_path", ""))
         default_json_path_button = QPushButton("Browse")
         default_json_path_button.clicked.connect(self.select_default_json_path)
-        default_paths_layout.addRow("Default JSON Path:", self.default_json_path_edit)
-        default_paths_layout.addWidget(default_json_path_button)
+        default_json_path_layout = QHBoxLayout()
+        default_json_path_layout.addWidget(self.default_json_path_edit)
+        default_json_path_layout.addWidget(default_json_path_button)
+        defaults_layout.addRow("Default JSON Path:", default_json_path_layout)
 
-        startup_json_layout = QHBoxLayout()
         self.startup_json_combo = QComboBox()
         self.startup_json_combo.addItems(list(self.file_map.keys()) + ["Custom"])
         self.startup_json_combo.setCurrentText(self.settings["startup_json"])
-        startup_json_layout.addWidget(self.startup_json_combo)
+        defaults_layout.addRow("Startup JSON:", self.startup_json_combo)
 
         self.custom_json_path_edit = QLineEdit(self.settings.get("custom_json_path", ""))
         self.custom_json_path_button = QPushButton("Browse")
         self.custom_json_path_button.clicked.connect(self.select_custom_json_path)
-        startup_json_layout.addWidget(self.custom_json_path_edit)
-        startup_json_layout.addWidget(self.custom_json_path_button)
+        custom_json_path_layout = QHBoxLayout()
+        custom_json_path_layout.addWidget(self.custom_json_path_edit)
+        custom_json_path_layout.addWidget(self.custom_json_path_button)
+        defaults_layout.addRow("Custom JSON Path:", custom_json_path_layout)
 
         self.startup_json_combo.currentTextChanged.connect(self.toggle_custom_json_path)
         self.toggle_custom_json_path(self.startup_json_combo.currentText())
 
-        default_paths_layout.addRow("Startup JSON:", startup_json_layout)
+        restore_json_button = QPushButton("Restore JSON from Backup")
+        restore_json_button.clicked.connect(self.restore_starfield_json)
+        defaults_layout.addRow(restore_json_button)
 
-        default_paths_group.setLayout(default_paths_layout)
-        layout.addWidget(default_paths_group)
+        defaults_widget.setLayout(defaults_layout)
+        tabs.addTab(defaults_widget, "Defaults")
 
-        # Additional Settings GroupBox
-        additional_settings_group = QGroupBox("Additional Settings")
-        additional_settings_layout = QFormLayout()
+        backup_widget = QWidget()
+        backup_layout = QFormLayout()
 
         self.auto_save_interval_spinbox = QSpinBox()
         self.auto_save_interval_spinbox.setRange(1, 60)
         self.auto_save_interval_spinbox.setValue(self.settings.get("auto_save_interval", 10))
-        additional_settings_layout.addRow("Auto-Save Interval (minutes):", self.auto_save_interval_spinbox)
+        backup_layout.addRow("Auto Save Interval (minutes):", self.auto_save_interval_spinbox)
 
         self.enable_notifications_checkbox = QCheckBox("Enable Notifications")
         self.enable_notifications_checkbox.setChecked(self.settings.get("enable_notifications", True))
-        additional_settings_layout.addRow(self.enable_notifications_checkbox)
+        backup_layout.addRow(self.enable_notifications_checkbox)
 
         self.default_export_format_combo = QComboBox()
         self.default_export_format_combo.addItems(["CSV", "JSON", "PDF"])
-        self.default_export_format_combo.setCurrentText(self.settings["default_export_format"])
-        additional_settings_layout.addRow("Default Export Format:", self.default_export_format_combo)
+        self.default_export_format_combo.setCurrentText(self.settings.get("default_export_format", "CSV"))
+        backup_layout.addRow("Default Export Format:", self.default_export_format_combo)
 
         self.backup_frequency_spinbox = QSpinBox()
         self.backup_frequency_spinbox.setRange(1, 60)
-        self.backup_frequency_spinbox.setValue(self.settings.get("backup_frequency", 30))
-        additional_settings_layout.addRow("Backup Frequency (minutes):", self.backup_frequency_spinbox)
+        self.backup_frequency_spinbox.setValue(self.settings.get("backup_frequency", 7))
+        backup_layout.addRow("Backup Frequency (days):", self.backup_frequency_spinbox)
 
-        additional_settings_group.setLayout(additional_settings_layout)
-        layout.addWidget(additional_settings_group)
+        self.backup_location_edit = QLineEdit(self.settings.get("backup_location", ""))
+        backup_location_button = QPushButton("Browse")
+        backup_location_button.clicked.connect(self.select_backup_location)
+        backup_location_layout = QHBoxLayout()
+        backup_location_layout.addWidget(self.backup_location_edit)
+        backup_location_layout.addWidget(backup_location_button)
+        backup_layout.addRow("Backup Location:", backup_location_layout)
 
-        restore_button = QPushButton("Restore Starfield JSON")
-        restore_button.clicked.connect(self.restore_starfield_json)
-        layout.addWidget(restore_button)
+        backup_widget.setLayout(backup_layout)
+        tabs.addTab(backup_widget, "Backup")
 
-        check_update_button = QPushButton("Check for Updates")
-        check_update_button.clicked.connect(self.check_for_updates)
-        layout.addWidget(check_update_button)
+        update_widget = QWidget()
+        update_layout = QFormLayout()
+
+        self.check_for_updates_checkbox = QCheckBox("Check for Updates on Startup")
+        self.check_for_updates_checkbox.setChecked(self.settings.get("check_for_updates", True))
+        update_layout.addRow(self.check_for_updates_checkbox)
+
+        self.update_schedule_combo = QComboBox()
+        self.update_schedule_combo.addItems(["Daily", "Weekly", "Monthly"])
+        self.update_schedule_combo.setCurrentText(self.settings.get("update_schedule", "Weekly"))
+        update_layout.addRow("Update Schedule:", self.update_schedule_combo)
+
+        check_updates_button = QPushButton("Check for Updates")
+        check_updates_button.clicked.connect(self.check_for_updates)
+        update_layout.addRow(check_updates_button)
+
+        update_widget.setLayout(update_layout)
+        tabs.addTab(update_widget, "Update")
+
+        advanced_widget = QWidget()
+        advanced_layout = QFormLayout()
+
+        self.enable_error_logging_checkbox = QCheckBox("Enable Error Logging")
+        self.enable_error_logging_checkbox.setChecked(self.settings.get("enable_error_logging", True))
+        advanced_layout.addRow(self.enable_error_logging_checkbox)
+
+        self.debug_mode_checkbox = QCheckBox("Enable Debug Mode")
+        self.debug_mode_checkbox.setChecked(self.settings.get("debug_mode", False))
+        advanced_layout.addRow(self.debug_mode_checkbox)
+
+        self.cache_timeout_spinbox = QSpinBox()
+        self.cache_timeout_spinbox.setRange(1, 300)
+        self.cache_timeout_spinbox.setValue(self.settings.get("cache_timeout", 60))
+        advanced_layout.addRow("Cache Timeout (seconds):", self.cache_timeout_spinbox)
+
+        advanced_widget.setLayout(advanced_layout)
+        tabs.addTab(advanced_widget, "Advanced")
+
+        main_layout.addWidget(tabs)
+
+        button_layout = QHBoxLayout()
 
         save_button = QPushButton("Save")
-        save_button.clicked.connect(lambda: self.save_settings_from_dialog(dialog))
-        layout.addWidget(save_button)
+        save_button.clicked.connect(lambda: self.save_settings(dialog))
+        button_layout.addWidget(save_button)
 
-        dialog.setLayout(layout)
+        cancel_button = QPushButton("Cancel")
+        cancel_button.clicked.connect(dialog.reject)
+        button_layout.addWidget(cancel_button)
+
+        main_layout.addLayout(button_layout)
+        dialog.setLayout(main_layout)
+
         dialog.exec_()
-
-    def select_color(self, setting):
-        color = QColorDialog.getColor()
-        if color.isValid():
-            self.settings[setting] = color.name()
-            self.save_settings()
-
-    def check_for_updates(self):
-        version_url = "https://raw.githubusercontent.com/skillerious/RobinDoak/main/Version.txt"  # URL to the Version.txt file
-        try:
-            response = requests.get(version_url)
-            response.raise_for_status()
-            latest_version = response.text.strip()
-            current_version = "1.0"  # Replace with actual current version
-            if latest_version > current_version:
-                reply = QMessageBox.question(self, 'Update Available', f'A new version ({latest_version}) is available. Do you want to download it?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-                if reply == QMessageBox.Yes:
-                    download_url = f"https://github.com/skillerious/RobinDoak/blob/main/Test-Version{latest_version}.exe"  # URL to the updated executable
-                    update_dialog = UpdateDialog(download_url, self)
-                    update_dialog.exec_()
-            else:
-                QMessageBox.information(self, "No Update Available", "You are currently using the latest version of Starfield IDDB.")
-        except Exception as e:
-            QMessageBox.warning(self, "Update Check Failed", f"Failed to check for updates: {e}")
-
-    def select_custom_json_path(self):
-        file_path, _ = QFileDialog.getOpenFileName(self, "Select Custom JSON File", self.settings.get("custom_json_path", ""), "JSON Files (*.json);;All Files (*)")
-        if file_path:
-            self.custom_json_path_edit.setText(file_path)
 
     def toggle_custom_json_path(self, text):
         if text == "Custom":
@@ -1108,53 +1105,150 @@ class JSONViewerApp(QMainWindow):
             self.custom_json_path_edit.setEnabled(False)
             self.custom_json_path_button.setEnabled(False)
 
-    def restore_starfield_json(self):
-        backup_folder = os.path.join(os.getcwd(), 'json backup')
-        project_folder = os.getcwd()
-        for file_name in os.listdir(backup_folder):
-            src_file = os.path.join(backup_folder, file_name)
-            dst_file = os.path.join(project_folder, file_name)
-            shutil.copyfile(src_file, dst_file)
-        self.show_notification('Starfield JSON files have been restored from backup.')
-        self.refresh()
+    def save_settings(self, dialog):
+        self.settings["theme"] = self.theme_combo.currentText()
+        self.settings["highlight_color"] = self.highlight_color_edit.text()
+        self.settings["font_color"] = self.font_color_edit.text()
+        self.settings["background_color"] = self.background_color_edit.text()
+        self.settings["alternate_background_color"] = self.alternate_background_color_edit.text()
+        self.settings["border_color"] = self.border_color_edit.text()
+        self.settings["button_hover_color"] = self.button_hover_color_edit.text()
+        self.settings["button_press_color"] = self.button_press_color_edit.text()
+        self.settings["toolbar_bg_start"] = self.toolbar_bg_start_edit.text()
+        self.settings["toolbar_bg_end"] = self.toolbar_bg_end_edit.text()
+        self.settings["dialog_bg_color"] = self.dialog_bg_color_edit.text()
+        self.settings["label_color"] = self.label_color_edit.text()
 
-    def select_default_csv_path(self):
-        path = QFileDialog.getExistingDirectory(self, "Select Default CSV Path")
-        if path:
-            self.default_csv_path_edit.setText(path)
-
-    def select_default_json_path(self):
-        path = QFileDialog.getExistingDirectory(self, "Select Default JSON Path")
-        if path:
-            self.default_json_path_edit.setText(path)
-
-    def save_settings_from_dialog(self, dialog):
         self.settings["font_size"] = self.font_size_spinbox.value()
         self.settings["row_height"] = self.row_height_spinbox.value()
         self.settings["show_grid"] = self.show_grid_checkbox.isChecked()
         self.settings["alternate_row_colors"] = self.alternate_row_colors_checkbox.isChecked()
-        self.settings["theme"] = self.theme_combo.currentText()
+
+        self.settings["shortcut_new_file"] = self.shortcut_new_file_edit.text()
+        self.settings["shortcut_add"] = self.shortcut_add_edit.text()
+        self.settings["shortcut_edit"] = self.shortcut_edit_edit.text()
+        self.settings["shortcut_open"] = self.shortcut_open_edit.text()
+        self.settings["shortcut_save"] = self.shortcut_save_edit.text()
+        self.settings["shortcut_save_as"] = self.shortcut_save_as_edit.text()
+        self.settings["shortcut_undo"] = self.shortcut_undo_edit.text()
+        self.settings["shortcut_redo"] = self.shortcut_redo_edit.text()
+        self.settings["shortcut_delete"] = self.shortcut_delete_edit.text()
+
         self.settings["default_csv_path"] = self.default_csv_path_edit.text()
         self.settings["default_json_path"] = self.default_json_path_edit.text()
         self.settings["startup_json"] = self.startup_json_combo.currentText()
         self.settings["custom_json_path"] = self.custom_json_path_edit.text()
+
         self.settings["auto_save_interval"] = self.auto_save_interval_spinbox.value()
         self.settings["enable_notifications"] = self.enable_notifications_checkbox.isChecked()
         self.settings["default_export_format"] = self.default_export_format_combo.currentText()
         self.settings["backup_frequency"] = self.backup_frequency_spinbox.value()
-        self.save_settings()
+        self.settings["backup_location"] = self.backup_location_edit.text()
+
+        self.settings["check_for_updates"] = self.check_for_updates_checkbox.isChecked()
+        self.settings["update_schedule"] = self.update_schedule_combo.currentText()
+
+        self.settings["enable_error_logging"] = self.enable_error_logging_checkbox.isChecked()
+        self.settings["debug_mode"] = self.debug_mode_checkbox.isChecked()
+        self.settings["cache_timeout"] = self.cache_timeout_spinbox.value()
+
+        save_settings(self.settings)
+        self.apply_theme()
+        self.apply_table_settings()
         dialog.accept()
 
-    def load_settings(self):
-        if os.path.exists("settings.json"):
-            with open("settings.json", "r") as f:
-                self.settings = {**self.settings, **json.load(f)}
+    def select_color(self, setting, line_edit, canvas):
+        color = QColorDialog.getColor()
+        if color.isValid():
+            line_edit.setText(color.name())
+            canvas.setStyleSheet(f"background-color: {color.name()};")
+            self.settings[setting] = color.name()
 
-    def save_settings(self):
-        with open("settings.json", "w") as f:
-            json.dump(self.settings, f)
+    def restore_default_colors(self):
+        self.highlight_color_edit.setText(DEFAULT_SETTINGS["highlight_color"])
+        self.font_color_edit.setText(DEFAULT_SETTINGS["font_color"])
+        self.background_color_edit.setText(DEFAULT_SETTINGS["background_color"])
+        self.alternate_background_color_edit.setText(DEFAULT_SETTINGS["alternate_background_color"])
+        self.border_color_edit.setText(DEFAULT_SETTINGS["border_color"])
+        self.button_hover_color_edit.setText(DEFAULT_SETTINGS["button_hover_color"])
+        self.button_press_color_edit.setText(DEFAULT_SETTINGS["button_press_color"])
+        self.toolbar_bg_start_edit.setText(DEFAULT_SETTINGS["toolbar_bg_start"])
+        self.toolbar_bg_end_edit.setText(DEFAULT_SETTINGS["toolbar_bg_end"])
+        self.dialog_bg_color_edit.setText(DEFAULT_SETTINGS["dialog_bg_color"])
+        self.label_color_edit.setText(DEFAULT_SETTINGS["label_color"])
+
         self.apply_theme()
-        self.apply_customizations()
+
+    def apply_color_palette(self, palette_name):
+        palettes = {
+            "Default": DEFAULT_SETTINGS,
+            "Cool Blues": {
+                "highlight_color": "#3399ff",
+                "font_color": "#e6f2ff",
+                "background_color": "#00264d",
+                "alternate_background_color": "#001a33",
+                "border_color": "#3399ff",
+                "button_hover_color": "#3399ff",
+                "button_press_color": "#2673cc",
+                "toolbar_bg_start": "#003366",
+                "toolbar_bg_end": "#00264d",
+                "dialog_bg_color": "#00264d",
+                "label_color": "#e6f2ff"
+            },
+            "Warm Sunset": {
+                "highlight_color": "#ff9966",
+                "font_color": "#fff2e6",
+                "background_color": "#4d2600",
+                "alternate_background_color": "#331a00",
+                "border_color": "#ff9966",
+                "button_hover_color": "#ff9966",
+                "button_press_color": "#cc8052",
+                "toolbar_bg_start": "#663300",
+                "toolbar_bg_end": "#4d2600",
+                "dialog_bg_color": "#4d2600",
+                "label_color": "#fff2e6"
+            },
+            "Forest Greens": {
+                "highlight_color": "#66cc66",
+                "font_color": "#e6ffe6",
+                "background_color": "#003300",
+                "alternate_background_color": "#002600",
+                "border_color": "#66cc66",
+                "button_hover_color": "#66cc66",
+                "button_press_color": "#52a652",
+                "toolbar_bg_start": "#004d00",
+                "toolbar_bg_end": "#003300",
+                "dialog_bg_color": "#003300",
+                "label_color": "#e6ffe6"
+            },
+            "Desert Sands": {
+                "highlight_color": "#cc9933",
+                "font_color": "#fffbf2",
+                "background_color": "#4d3b00",
+                "alternate_background_color": "#332800",
+                "border_color": "#cc9933",
+                "button_hover_color": "#cc9933",
+                "button_press_color": "#a67c29",
+                "toolbar_bg_start": "#665000",
+                "toolbar_bg_end": "#4d3b00",
+                "dialog_bg_color": "#4d3b00",
+                "label_color": "#fffbf2"
+            }
+        }
+        selected_palette = palettes.get(palette_name, DEFAULT_SETTINGS)
+        self.highlight_color_edit.setText(selected_palette["highlight_color"])
+        self.font_color_edit.setText(selected_palette["font_color"])
+        self.background_color_edit.setText(selected_palette["background_color"])
+        self.alternate_background_color_edit.setText(selected_palette["alternate_background_color"])
+        self.border_color_edit.setText(selected_palette["border_color"])
+        self.button_hover_color_edit.setText(selected_palette["button_hover_color"])
+        self.button_press_color_edit.setText(selected_palette["button_press_color"])
+        self.toolbar_bg_start_edit.setText(selected_palette["toolbar_bg_start"])
+        self.toolbar_bg_end_edit.setText(selected_palette["toolbar_bg_end"])
+        self.dialog_bg_color_edit.setText(selected_palette["dialog_bg_color"])
+        self.label_color_edit.setText(selected_palette["label_color"])
+
+        self.apply_theme()
 
     def apply_theme(self):
         if self.settings["theme"] == "dark":
@@ -1162,18 +1256,13 @@ class JSONViewerApp(QMainWindow):
         else:
             self.setStyleSheet("")
 
-    def apply_customizations(self):
-        font = self.font()
-        font.setPointSize(self.settings.get("font_size", 12))
-        self.setFont(font)
-        self.table.setAlternatingRowColors(self.settings.get("alternate_row_colors", True))
-        self.table.setShowGrid(self.settings.get("show_grid", True))
-        for row in range(self.table.rowCount()):
-            self.table.setRowHeight(row, self.settings.get("row_height", 50))
+    def apply_table_settings(self):
+        self.table.setAlternatingRowColors(self.settings["alternate_row_colors"])
+        self.table.setShowGrid(self.settings["show_grid"])
         self.table.setStyleSheet(f"""
             QTableWidget {{
                 gridline-color: {self.settings.get('highlight_color', '#3a7ae0')};
-                font-size: 14pt;
+                font-size: {self.settings.get('font_size', 14)}pt;
                 alternate-background-color: {self.settings.get('alternate_background_color', '#2e2e2e')};
                 background-color: {self.settings.get('background_color', '#1e1e1e')};
                 color: {self.settings.get('font_color', 'white')};
@@ -1187,110 +1276,119 @@ class JSONViewerApp(QMainWindow):
                 color: white;
             }}
         """)
-
-    def show_about_dialog(self):
-        about_text = """
-        <h2>About Starfield IDDB</h2>
-        <p>Starfield IDDB is a robust application for viewing and managing Starfield item databases.</p>
-        <p>Developed by Robin Doak.</p>
-        <p>Version 1.0</p>
-        """
-        QMessageBox.about(self, "About Starfield IDDB", about_text)
-
-    def show_help_dialog(self):
-        help_dialog = QDialog(self)
-        help_dialog.setWindowTitle("Help")
-        layout = QVBoxLayout()
-
-        help_text = """
-        <h2>Starfield IDDB Help</h2>
-        <ul>
-            <li><b>New File:</b> Create a new JSON file.</li>
-            <li><b>Add:</b> Add a new item to the current JSON file.</li>
-            <li><b>Open:</b> Open an existing JSON file.</li>
-            <li><b>Save:</b> Save the current JSON file.</li>
-            <li><b>Save As:</b> Save the current JSON file with a new name.</li>
-            <li><b>Print:</b> Print the current view.</li>
-            <li><b>Export to CSV:</b> Export the current JSON data to a CSV file.</li>
-            <li><b>Export to JSON:</b> Export the current JSON data to a new JSON file.</li>
-            <li><b>Undo:</b> Undo the last action.</li>
-            <li><b>Redo:</b> Redo the last undone action.</li>
-            <li><b>Refresh:</b> Refresh the current view.</li>
-            <li><b>Delete:</b> Delete the selected items from the current JSON file.</li>
-            <li><b>Settings:</b> Open the settings dialog.</li>
-            <li><b>Help:</b> Show this help dialog.</li>
-            <li><b>About:</b> Show information about the application.</li>
-        </ul>
-        <h3>Table Features</h3>
-        <ul>
-            <li><b>Search Bar:</b> Use the search bar to filter items based on their ID, name, or console command.</li>
-            <li><b>Advanced Search:</b> Use the advanced search button to specify more detailed search criteria.</li>
-            <li><b>Context Menu:</b> Right-click on an item to add it to favourites, copy its console command, or edit it.</li>
-            <li><b>Double Click:</b> Double-click on an item to view its details.</li>
-            <li><b>Favourites:</b> Click the star icon to add/remove an item to/from favourites.</li>
-        </ul>
-        <h3>Keyboard Shortcuts</h3>
-        <ul>
-            <li><b>Ctrl+F:</b> Focus on the search bar.</li>
-            <li><b>Ctrl+S:</b> Save the current JSON file.</li>
-            <li><b>Ctrl+E:</b> Export the current JSON data to a CSV file.</li>
-            <li><b>Ctrl+Z:</b> Undo the last action.</li>
-            <li><b>Ctrl+Y:</b> Redo the last undone action.</li>
-        </ul>
-        """
-
-        help_label = QLabel(help_text)
-        help_label.setStyleSheet("color: white; font-size: 12pt;")
-        help_label.setWordWrap(True)
-        layout.addWidget(help_label)
-
-        close_button = QPushButton("Close", self)
-        close_button.clicked.connect(help_dialog.accept)
-        layout.addWidget(close_button)
-
-        help_dialog.setLayout(layout)
-        help_dialog.exec_()
-
-    def show_notification(self, message):
-        if self.settings.get("enable_notifications", True):
-            icon_path = os.path.join(os.getcwd(), 'images', 'starfield.png')
-            notification.notify(
-                title='Starfield IDDB',
-                message=message,
-                app_name='Starfield IDDB',
-                app_icon=icon_path
-            )
+        self.table.horizontalHeader().setStyleSheet(f"""
+            QHeaderView::section {{
+                background-color: {self.settings.get('highlight_color', '#3a7ae0')};
+                color: {self.settings.get('font_color', 'white')};
+                font-weight: bold;
+                font-size: {self.settings.get('font_size', 12)}pt;
+                padding: 5px;
+                border: 1px solid {self.settings.get('highlight_color', '#3a7ae0')};
+            }}
+        """)
 
     def setup_shortcuts(self):
-        QShortcut(QKeySequence("Ctrl+F"), self).activated.connect(lambda: self.search_entry.setFocus())
-        QShortcut(QKeySequence("Ctrl+S"), self).activated.connect(self.export_to_json)
-        QShortcut(QKeySequence("Ctrl+E"), self).activated.connect(self.export_to_csv)
-        QShortcut(QKeySequence("Ctrl+Z"), self).activated.connect(self.undo)
-        QShortcut(QKeySequence("Ctrl+Y"), self).activated.connect(self.redo)
+        QShortcut(QKeySequence(self.settings["shortcut_new_file"]), self, self.new_file)
+        QShortcut(QKeySequence(self.settings["shortcut_add"]), self, self.add_item)
+        QShortcut(QKeySequence(self.settings["shortcut_edit"]), self, self.edit_selected_item)
+        QShortcut(QKeySequence(self.settings["shortcut_open"]), self, self.open_file)
+        QShortcut(QKeySequence(self.settings["shortcut_save"]), self, self.save_file)
+        QShortcut(QKeySequence(self.settings["shortcut_save_as"]), self, self.save_file_as)
+        QShortcut(QKeySequence(self.settings["shortcut_undo"]), self, self.undo)
+        QShortcut(QKeySequence(self.settings["shortcut_redo"]), self, self.redo)
+        QShortcut(QKeySequence(self.settings["shortcut_delete"]), self, self.delete_selected_items)
 
     def undo(self):
-        if not self.undo_stack:
-            return
-        action, item = self.undo_stack.pop()
-        if action == "add":
-            self.redo_stack.append(("remove", item))
-            self.add_to_favourites(item)
-        elif action == "remove":
-            self.redo_stack.append(("add", item))
-            self.remove_from_favourites(item)
-        self.populate_listbox(self.data)
+        if self.undo_stack:
+            action, item = self.undo_stack.pop()
+            if action == "remove":
+                self.data.append(item)
+            elif action == "add":
+                self.data = [i for i in self.data if i != item]
+            self.redo_stack.append((action, item))
+            self.populate_listbox(self.data)
+            self.save_file()
 
     def redo(self):
-        if not self.redo_stack:
-            return
-        action, item = self.redo_stack.pop()
-        if action == "add":
-            self.undo_stack.append(("remove", item))
-            self.add_to_favourites(item)
-        elif action == "remove":
-            self.undo_stack.append(("add", item))
-            self.remove_from_favourites(item)
-        self.populate_listbox(self.data)
+        if self.redo_stack:
+            action, item = self.redo_stack.pop()
+            if action == "remove":
+                self.data = [i for i in self.data if i != item]
+            elif action == "add":
+                self.data.append(item)
+            self.undo_stack.append((action, item))
+            self.populate_listbox(self.data)
+            self.save_file()
+
+    def show_help_dialog(self):
+        help_window = HelpWindow(self)  # Pass 'self' as the parent
+        help_window.show()
+
+    def show_about_dialog(self):
+        about_dialog = AboutDialog(self)
+        about_dialog.exec_()
+
+    def check_for_updates(self):
+        self.status_bar.showMessage("Checking for updates...")
+        self.update_thread = UpdateCheckThread()
+        self.update_thread.update_available.connect(self.on_update_check_complete)
+        self.update_thread.start()
+
+    def on_update_check_complete(self, update_available, latest_version, exe_url):
+        if update_available:
+            reply = QMessageBox.question(
+                self,
+                'Update Available',
+                f"A new version ({latest_version}) is available. Do you want to update?",
+                QMessageBox.Yes | QMessageBox.No
+            )
+            if reply == QMessageBox.Yes:
+                update_dialog = UpdateDialog(exe_url, self)
+                update_dialog.exec_()
+            else:
+                self.status_bar.showMessage("Update postponed.")
+        else:
+            if latest_version:
+                QMessageBox.information(self, "No Update", f"You are using the latest version ({latest_version}).")
+            else:
+                QMessageBox.warning(self, "Update Check Failed", "Failed to check for updates.")
+    
+        self.status_bar.showMessage("Ready")
+
+
+
+
+    def select_default_csv_path(self):
+        options = QFileDialog.Options()
+        file_path = QFileDialog.getExistingDirectory(self, "Select Default CSV Path", options=options)
+        if file_path:
+            self.default_csv_path_edit.setText(file_path)
+
+    def select_default_json_path(self):
+        options = QFileDialog.Options()
+        file_path = QFileDialog.getExistingDirectory(self, "Select Default JSON Path", options=options)
+        if file_path:
+            self.default_json_path_edit.setText(file_path)
+
+    def select_custom_json_path(self):
+        options = QFileDialog.Options()
+        file_path, _ = QFileDialog.getOpenFileName(self, "Select Custom JSON File", "", "JSON Files (*.json);;All Files (*)", options=options)
+        if file_path:
+            self.custom_json_path_edit.setText(file_path)
+
+    def restore_starfield_json(self):
+        backup_file = os.path.join(self.settings.get("backup_location", ""), "Starfield.json.bak")
+        if os.path.exists(backup_file):
+            shutil.copy(backup_file, "Starfield.json")
+            self.status_bar.showMessage("Starfield.json restored from backup.")
+        else:
+            self.status_bar.showMessage("No backup found to restore.")
+
+    def select_backup_location(self):
+        options = QFileDialog.Options()
+        file_path = QFileDialog.getExistingDirectory(self, "Select Backup Location", options=options)
+        if file_path:
+            self.backup_location_edit.setText(file_path)
 
     def add_item(self):
         dialog = QDialog(self)
@@ -1318,7 +1416,6 @@ class JSONViewerApp(QMainWindow):
         self.populate_listbox(self.data)
         self.save_file()
         dialog.accept()
-        audit_log.log("Add Item", new_item)
 
     def edit_selected_item(self):
         selected_row = self.table.currentRow()
@@ -1341,53 +1438,25 @@ class JSONViewerApp(QMainWindow):
             layout.addWidget(save_button)
             dialog.setLayout(layout)
             dialog.exec_()
-        else:
-            self.show_notification("No item selected for editing.")
-
-    def manage_favorites(self):
-        fav_manager = FavoritesManager(self)
-        fav_manager.showMaximized()
-        fav_manager.exec_()
 
     def save_edit(self, dialog, row, item_code_edit, item_name_edit, console_command_edit):
-        # Update the table widget
         self.table.setItem(row, 0, QTableWidgetItem(item_code_edit.text()))
         self.table.setItem(row, 1, QTableWidgetItem(item_name_edit.text()))
         cell_widget = self.table.cellWidget(row, 2)
         cell_widget.layout().itemAt(0).widget().setText(console_command_edit.text())
 
-        # Update the data list
         self.data[row] = {
             "Item Code": item_code_edit.text(),
             "Item Name": item_name_edit.text(),
             "Console Command": console_command_edit.text()
         }
 
-        # Save the updated data list to the current JSON file
         with open(self.current_file, 'w') as jsonfile:
             json.dump(self.data, jsonfile)
 
         dialog.accept()
 
 if __name__ == '__main__':
-    json_files = [
-        "Favourites.json",
-        "PopularItems.json",
-        "weapons.json",
-        "ammo.json",
-        "spacesuits.json",
-        "helmets.json",
-        "Boostpacks.json",
-        "aid.json",
-        "food.json",
-        "skills.json",
-        "book.json",
-        "traits.json",
-        "materials.json",
-        "clothing.json"
-    ]
-    
-    app = QApplication(sys.argv)
-    viewer = JSONViewerApp(json_files)
-    viewer.show()
+    app = QApplication(sys.argv)  # Ensure this is the first PyQt5 object created
+    viewer = JSONViewerApp([])     # Now you can create widgets
     sys.exit(app.exec_())
